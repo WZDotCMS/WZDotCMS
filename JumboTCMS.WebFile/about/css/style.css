@@ -1,0 +1,30 @@
+﻿html { background: #708aa1; text-align: left; }
+body { background: #708aa1; text-align: left; font: 12px/20px Tahoma, Arial, sans-serif; color: #545454; padding: 0px; margin: 0px; }
+td { font: 12px/20px Tahoma, Arial, sans-serif; color: #545454; }
+textarea { font: 12px/20px Tahoma, Arial, sans-serif; color: #545454; vertical-align: middle; }
+select { font: 12px/20px Tahoma, Arial, sans-serif; color: #545454; vertical-align: middle; }
+button { font: 12px/20px Tahoma, Arial, sans-serif; color: #545454; vertical-align: middle; }
+ul { padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; }
+li { padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; }
+dl { padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; }
+dd { padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px; }
+h1 { font-size: 14px; background: url(../images/h1-bg.gif) no-repeat left bottom; margin-bottom: 15px; padding-bottom: 12px; font-family: Tahoma, Arial, sans-serif; }
+a { color: #387db4; text-decoration: none; }
+a:hover { color: #333; text-decoration: underline; }
+.top { background: #2c516c;}
+.top-logo {  background: url(../images/logo.png) no-repeat 30px 25px; width: 900px; border-bottom: #f29901 4px solid; position: relative; height: 74px; }
+.top-nav { padding-right: 8px; display: block; padding-left: 8px; font-size: 10px; right: 0px; background: #f29901; padding-bottom: 0px; color: #fff; bottom: 0px; padding-top: 0px; position: absolute; }
+.top-nav A { margin: 0px 8px; color: #fff; }
+.top-nav A:hover { color: #333; }
+#mainbg { width: 900px; padding: 0px; background: #99ABB9; }
+#footer { color: #999999; text-align: right; padding: 10px; background: #EEE; }
+#right { float: right; margin: 0px; padding: 0px; width: 715px; background: #fff; text-align: left; }
+#left { float: left; margin: 0px; padding: 0px; background: #99ABB9; width: 185px; text-align: right; }
+.left-menu { margin-top: 45px; align: right; width: 170px; color: #fff; }
+.left-menu UL { list-style-type: none; }
+.left-menu UL li { padding-right: 40px; line-height: 28px; border-bottom: #b3bfcb 1px solid; list-style-type: none; text-align: right; }
+.left-menu UL li A { color: #fff; }
+.left-menu UL li A:hover { font-weight: bold; color: #fff; text-decoration: none; }
+.text { margin: 0px; padding: 20px; }
+.txt_yellow { color: #F39801; font-weight: bold; }
+.currently { background-color: #F39801; }

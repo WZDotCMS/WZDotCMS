@@ -1,0 +1,33 @@
+﻿<div class="rightlist mt5">
+	<div class="title"><strong>投票调查</strong></div>
+	<div class="body cssPluginVote">
+		<form id="voteform" name="voteform">
+		<#if test="${notequals(cint(vote.id), 0)}">
+		<table width="100%">
+			<tr>
+			<th>${vote.title}</th>
+			</tr>
+		</table>
+<#if test="${notequals(vote.item.count, 0)}">
+<#foreach collection="${vote.item}" var="field" index="i">
+		<dl>
+			<dt>
+<#if test="${equals(cint(vote.type), 1)}">
+<input type="checkbox" name="vote" value="${i}" />
+<#else>
+<input type="radio" name="vote" value="${i}" />
+<#/if>
+			</dt>
+			<dd>${field.itemtext}</dd>
+		</dl>
+<#/foreach>
+<#/if>
+
+		<div class="votesubmit">
+			<input type="button" onclick="ajaxPluginVoteAdd(${vote.id},${vote.type},this)" value="投票" class="LoginInput">
+			<input type="button" value="查看" class="LoginInput" onclick="window.open('${site.Dir}extends/vote/default.aspx?id=${vote.id}');">
+		</div>
+		<#/if>
+		</form>
+	</div>
+</div>

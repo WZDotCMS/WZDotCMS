@@ -1,0 +1,18 @@
+﻿<div class="cssLink">
+	<div class="title">
+		<dl>
+			<dt>友情链接</dt>
+			<dd></dd>
+		</dl>
+	</div>
+	<div class="content">
+		<ul>
+<#foreach collection="${links}" var="field" index="i">
+<#if test="${equals(cint(field.style), 0)}">
+<li><a href="${field.url}" target="_blank" title="${field.info}">${field.title}</a></li>
+<#else><li><a href="${field.url}" target="_blank" title="${field.info}"><img src="${field.imgpath}" border=0 align="absmiddle" width="88" height="31"></a></li>
+<#/if>
+<#/foreach>
+		</ul>
+	</div>
+</div>

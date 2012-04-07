@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><jcms:site.name/> - <jcms:site.page.description/></title>
+<meta http-equiv="Content-Language" content="zh-CN" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta name="keywords" content="<jcms:site.page.keywords/>" /><meta name="description" content="<jcms:site.page.description/>" /><meta name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<base href="<jcms:site.page.basehref/>">
+<script type="text/javascript">
+function hbTab(m, n) {
+	for (var i = 0; i < m; i++) {
+		if (i == n) {
+			$i("tabF_btn_" + i).className = "curr";
+			$i("tabF_div_" + i).style.display = "";
+		} else {
+			$i("tabF_btn_" + i).className = "none";
+			$i("tabF_div_" + i).style.display = "none";
+		}
+	}
+}
+</script>
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	
+	<div class="main pbody">
+		<!--~左侧~-->
+		<div class="j-left">
+			<div class="righttop mt5">
+				<div class="fvnews">
+					<div class="tbtn1">
+						<div class="tbtncon">
+							<li id="tabF_btn_0" onmouseover="hbTab(2, 0)" class="curr">图文推荐</li>
+							<li id="tabF_btn_1" onmouseover="hbTab(2, 1)" class="none">最新视频</li>
+						</div>
+					</div>
+					<div class="tbarea">
+						<div id="tabF_div_0" style="display:block;">
+<jcms:contentloop channelid="0" classid="0" repeatnum="5" isimg="1" istop="1" fields="[title],[isimg],[img]">
+							<div class="picplayer">
+								<ul class="picbody" id="picplayer-list">
+<#foreach content>
+<#if test="${equals(i,1)}">
+									<li>
+										<div><a href="$_{url}" title="$_{title}" target="_blank"><img src="$_{img}" alt="${field.title}" title="$_{title}" /></a></div>
+										<p><a href="$_{url}" title="$_{title}" target="_blank">${cutstring(field.title,38)}</a></p>
+									</li>
+<#else>
+									<li class="alpha">
+										<div><a href="$_{url}" title="$_{title}" target="_blank"><img src="$_{img}" alt="${field.title}" title="$_{title}" /></a></div>
+										<p><a href="$_{url}" title="$_{title}" target="_blank">${cutstring(field.title,38)}</a></p>
+									</li>
+<#/if>
+<#/foreach>
+ 								</ul>
+								<ul class="change" id="picplayer-change"></ul>
+								<script language="javascript">renderPicPlayer('picplayer');</script>
+							</div>
+</jcms:contentloop>
+						</div>
+						<div id="tabF_div_1" style="display:none;">
+<jcms:contentloop channelid="0" channeltype="video" classid="0" repeatnum="1" fields="[title]">
+<#foreach content>
+<iframe src="{site.Dir}plus/video_play.aspx?id=${field.id}&NO=0&w=297&h=226&auto=0" width="297" height="226" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe><div class="vtitle">${cutstring(field.title,38)}</div>
+<#/foreach>
+</jcms:contentloop>
+</div>
+					</div>
+				</div>
+				<div class="topnews">
+        				<div class="index-focus">
+						<!--~首页头条~-->
+<jcms:contentloop channelid="0" classid="0" repeatnum="1" istop="1" fields="[title],[summary]">
+<#foreach content>
+            					<h2 class="index-header"><a href="$_{url}" target="_blank">${field.title}</a></h2>
+            					<div class="index-header-desc">
+							<p>${cutstring(field.summary,100)}... <a href="$_{url}" target="_blank">[阅读全文]</a></p>
+						</div>
+<#/foreach>
+</jcms:contentloop>
+ 
+            					<!--~首页焦点~-->
+						<ul class="index-list">
+<jcms:contentloop channelid="0" classid="0" repeatnum="8" istop="-1" isfocus="1" fields="[title]">
+<#foreach content>
+							<li><a href="$_{channellink}" class="chlink" target="_blank">$_{channelname}</a><a href='$_{url}' title="$_{title}">${field.title}</a></li>
+<#/foreach>
+</jcms:contentloop>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+<!--~			<div class="clear mt5"><script type="text/javascript" src="{site.Dir}_data/ads/660_1.js"></script></div>~-->
+			<!--~内容列表~-->
+			<div class="newsbox">
+<jcms:channelloop repeatnum="6" orderfield="pid" ordertype="asc">
+<jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="8" fields="[title],[tcolor],[adddate]">
+<dl class="mt5">
+					<dt><strong>{$ChannelName}</strong><span><a href="{$ChannelLink}">更多 &raquo;</a></span></dt>
+					<dd>
+						<ul>
+						<#foreach content>
+							<li><span>${cdatestring(field.adddate,"yy-MM-dd")}</span><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+						<#/foreach></ul>
+					</dd>
+				</dl>
+</jcms:contentloop>
+</jcms:channelloop> </div>
+			<!--内容列表结束-->
+			<div class="midbanner mt5">
+				<div class="photonews"><jcms:contentloop channelid="0" classid="0" repeatnum="4" isimg="1" fields="[title],[tcolor],[adddate],[isimg],[img]">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" class="img"><img src='$_{img}' alt="${field.title}"></a><span><a href="$_{url}" title="$_{title}">${field.title}</a></span></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+			</div>
+		</div>
+		<!--~右侧~-->
+		<div class="j-right">
+			<jcms:include file="~/_data/html/p_translate.htm" />
+			<jcms:include file="~/_data/html/p_placard.htm" />
+			<!--~最新专题~-->
+			<jcms:include file="~/_data/html/j_speciallist.htm" />
+			<div class="rightbox2 mt5">
+				<div class="bar2" id="CTab_0">
+					<span>点击排行</span>
+					<a href="#CxTab0_1" class="s">总</a>
+					<a href="#CxTab0_2">年</a>
+					<a href="#CxTab0_3">月</a>
+				</div>
+				<div>
+					<div id="CShow_0" class="body"></div>
+                			<div style="display:none;" id="CxTab0_1"><dl class="ranklist">
+<jcms:contentloop channelid="0" classid="0" repeatnum="8" fields="[title],[summary]" orderfield="viewnum">
+<#foreach content>
+<#if test="${i lt 4}">
+	<#if test="${equals(i,1)}">
+						<dt class="nobd"><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+						<dd>${cutstring(field.summary,40)}...<a href="$_{url}" target="_blank">[阅读全文]</a></dd>
+	<#else>
+						<dt><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+	<#/if>
+<#else>
+						<dt><span class="ranknum">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+<#/if>
+<#/foreach>
+</jcms:contentloop>
+                			</dl></div>
+                			<div style="display:none;" id="CxTab0_2"><dl class="ranklist">
+<jcms:contentloop channelid="0" classid="0" repeatnum="8" fields="[title],[summary]" orderfield="viewnum" timerange="1y">
+<#foreach content>
+<#if test="${i lt 4}">
+	<#if test="${equals(i,1)}">
+						<dt class="nobd"><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+						<dd>${cutstring(field.summary,40)}...<a href="$_{url}" target="_blank">[阅读全文]</a></dd>
+	<#else>
+						<dt><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+	<#/if>
+<#else>
+						<dt><span class="ranknum">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+<#/if>
+<#/foreach>
+</jcms:contentloop>
+                			</dl></div>
+                			<div style="display:none;" id="CxTab0_3"><dl class="ranklist">
+<jcms:contentloop channelid="0" classid="0" repeatnum="8" fields="[title],[summary]" orderfield="viewnum" timerange="1m">
+<#foreach content>
+<#if test="${i lt 4}">
+	<#if test="${equals(i,1)}">
+						<dt class="nobd"><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+						<dd>${cutstring(field.summary,40)}...<a href="$_{url}" target="_blank">[阅读全文]</a></dd>
+	<#else>
+						<dt><span class="ranknum rn_red">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+	<#/if>
+<#else>
+						<dt><span class="ranknum">${i}</span><a href="$_{url}" target="_blank" title="$_{title}">${field.title}</a></dt>
+<#/if>
+<#/foreach>
+</jcms:contentloop>
+                			</dl></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab0 = new jTab('CTab_0','CShow_0','more');</script>
+			<!--~推荐与热门~-->
+			<div class="rightbox1 mt5">
+				<div class="bar1" id="CTab_1">
+					<a href="#CxTab1_1" class="s">推荐内容</a>
+					<a href="#CxTab1_2">焦点内容</a>
+				</div>
+				<div>
+					<div id="CShow_1" class="body"></div>
+					<div style="display:none;" id="CxTab1_1">
+<jcms:contentloop channelid="0" classid="0" repeatnum="10" fields="title,tcolor" istop="1">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div style="display:none;" id="CxTab1_2">
+<jcms:contentloop channelid="0" classid="0" repeatnum="10" fields="title,tcolor" isfocus="1">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab1 = new jTab('CTab_1','CShow_1','more');</script>
+	        <!--~投票调查~-->
+			<jcms:include file="~/_data/html/p_vote.htm" />
+	        <!--~投票调查~-->
+			<div class="rightbox1 mt5">
+				<div class="bar1" id="CTab_2">
+					<a href="#CxTab2_1" class="s">最新留言</a>
+					<a href="#CxTab2_2">最新评论</a>
+				</div>
+				<div>
+					<div id="CShow_2" class="body"></div>
+					<div style="display:none;" id="CxTab2_1"><ul><script src="{site.Dir}question/toplist.aspx?top=8"></script></ul></div>
+					<div style="display:none;" id="CxTab2_2"><ul><script src="{site.Dir}review/toplist.aspx?ccid=0&id=0&pagesize=8"></script></ul></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab2 = new jTab('CTab_2','CShow_2','more');</script>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~友情链接~-->
+	<jcms:include file="~/_data/html/p_link.htm" />
+	<!--~友情链接~-->
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">$('#topnav li.index').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+<script type='text/javascript' src="{site.Dir}extends/qqonline/qqonline.js"></script>
+</body>
+</html>

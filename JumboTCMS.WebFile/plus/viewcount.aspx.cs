@@ -1,0 +1,44 @@
+﻿/*
+ * 程序中文名称: 将博内容管理系统通用版
+ * 
+ * 程序英文名称: JumboTCMS
+ * 
+ * 程序版本: 5.2.X
+ * 
+ * 程序编写: 随风缘 (定制开发请联系：jumbot114#126.com,不接受免费的技术答疑,请见谅)
+ * 
+ * 官方网站: http://www.jumbotcms.net/
+ * 
+ * 商业服务: http://www.jumbotcms.net/about/service.html
+ * 
+ */
+
+using System;
+using System.Data;
+using JumboTCMS.Utils;
+using JumboTCMS.Common;
+namespace JumboTCMS.WebFile.Plus
+{
+    public partial class _viewcount : JumboTCMS.UI.FrontHtml
+    {
+        private string _operType = string.Empty;
+        private string _response = string.Empty;
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            Server.ScriptTimeout = 8;//脚本过期时间
+            if (JumboTCMS.Utils.Cookie.GetValue(q("cType") + "ViewNum" + q("id")) == null && Str2Int(q("addit")) == 1)
+            {
+                doh.Reset();
+                doh.ConditionExpress = "id=@id";
+                doh.AddConditionParameter("@id", q("id"));
+                doh.Add("jcms_module_" + q("cType"), "ViewNum");
+                JumboTCMS.Utils.Cookie.SetObj(q("cType") + "ViewNum" + q("id"), "ok");
+            }
+            doh.Reset();
+            doh.ConditionExpress = "id=@id";
+            doh.AddConditionParameter("@id", q("id"));
+            Response.Write(JumboTCMS.Utils.Strings.Html2Js(Str2Str(doh.GetField("jcms_module_" + q("cType"), "ViewNum").ToString())));
+        }
+    }
+}

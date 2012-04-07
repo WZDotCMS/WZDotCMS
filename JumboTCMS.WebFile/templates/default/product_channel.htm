@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><jcms:site.page.title/></title>
+<meta http-equiv="Content-Language" content="zh-CN" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta name="keywords" content="<jcms:site.page.keywords/>" /><meta name="description" content="<jcms:site.page.description/>" /><meta name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<base href="<jcms:site.page.basehref/>">
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	
+	<div class="main pbody">
+		<div class="my-left">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><jcms:site.page.nav/> </div>
+			</div>
+			<div class="contenter">
+				<div class="productbox">
+<jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="100" fields="title,price0,points,isimg,img">
+					<ul>
+<#foreach content>
+<li id="Repeat_${i}" style="display:none;">
+	<div class="pic">
+		<a href="$_{url}" title="$_{title}" class="img" target="_blank"><img src='$_{img}' alt="${field.title}"></a>
+	</div>
+	<div class="desc">
+		<a href="$_{url}" title="$_{title}" target="_blank">${cutstring(field.title,40)}</a>
+	</div>	
+	<div class="price0">
+		<span>市场价</span>
+		<strong>${floatstring(field.price0,"{0:C2}")} 元</strong>
+	</div>
+	<div class="price1">
+		<span>会员价</span>
+		<strong>${floatstring(field.points,"{0:C2}")} 元</strong>
+	</div>
+</li>
+<#/foreach>
+					</ul>
+					<div class="pages" id="PageBar"></div>
+					<div class="clear"></div>
+<script type="text/javascript">_jcms_GetPageContent({$ContentCount}, 20, 1);</script>
+</jcms:contentloop>
+				</div>
+			</div>
+		</div>
+		<div class="my-right">
+			<div class="rightlist mt5">
+				<div class="title"><strong>{$ChannelItemName}分类</strong></div>
+				<div class="body gplist">
+					<dl>
+						<dd>
+ 
+<ul>
+<jcms:classloop channelid="{$ChannelId}" depth="0" repeatnum="0">
+<li id="class{$ClassCode}" class="d{$ClassDepth}"><a href="{$ClassLink}">{$ClassName}</a></li>
+</jcms:classloop>
+</ul>
+ 
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="right-baidu"><!--#include virtual="/_data/shtm/more/5.htm" --></div>
+		</div>
+
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">$('#topnav li.channel{$ChannelId}').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

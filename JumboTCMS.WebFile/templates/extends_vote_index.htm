@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>投票结果 - <jcms:site.name/></title>
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<style type="text/css"> 
+.votelist { font-size:12px; width: 904px; border:1px solid #AACCEE; margin-top:10px; margin-left:6px; padding-bottom:10px; background:url(/themes/default/images/place_bg.gif) 0px -1px repeat-x; }
+.votelist .vtitle h3 { float:left; font-size:14px; letter-spacing:1px; font-weight:bold; margin:10px; }
+.votelist .vtitle span { float:right; font-size:12px; line-height:35px;  margin-right:20px; }
+.votelist .vbox { width: 890px; margin:0 auto;}
+.votelist .vbox table{border-collapse:collapse;border-spacing:0;}
+.votelist .vbox table{ margin:10px 0px;}
+.votelist .vbox table td,.votelist .vbox table th,.votelist .vbox table{ border:1px solid #E7EEF5;}
+.votelist .vbox table th{ text-align:center; font-weight:bold; color:#999; width:2em;}
+.votelist .vbox table td{ padding:10px 4px;}
+.votelist .vbox table td.tdcol3{width:5em; font-weight:bold; color:#1E50A0;}
+.tp_tit{ width:30em;color:#1E50A0;}
+.votelist .vbox table td div{ background:#efefef; padding:4px 0px;}
+.votelist .vbox table td div img{ height:11px;}
+</style>
+</head>
+<body>
+<div class="jbody">
+	<jcms:include file="~/_data/html/header.htm" />
+	<div class="main pbody">
+		<div class="mybody">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><a href="<jcms:site.home/>" class="home"></a>&nbsp;&raquo;&nbsp;投票结果</div>
+			</div>
+			<div class="contenter0">
+				<div class="votelist">
+					<div class="vtitle"><h3>{$VoteTitle}</h3><span>总票数：{$VoteVoteTotal}</span></div>
+<textarea id="voteList" style="display:none">
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+{#foreach $T as record}
+      <tr><th>{$T.record.no}</th><td class="tp_tit">{$T.record.text}</td><td class="tdcol3">{$T.record.persent} %</td><td><div><img src="{site.Dir}style/common/vote_tit_cs.jpg" width="{$T.record.persent}%" /></div></td><td class="tdcol3">{$T.record.votenum} 票</td></tr>
+{#/for}
+</table>
+</textarea>
+					<div id="ajaxVoteList" class="vbox"></div>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<jcms:include file="~/_data/html/footer.htm" />
+</div>
+<script type="text/javascript">
+var voteJSON = {$VoteSON};
+$("#ajaxVoteList").setTemplateElement("voteList", null, {filter_data: true});$("#ajaxVoteList").processTemplate(voteJSON);</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

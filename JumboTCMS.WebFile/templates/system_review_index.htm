@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>评论 - {$_title} - <jcms:site.name/></title>
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<script type="text/javascript" src="{site.Dir}review/styles/common.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<style  type="text/css"> 
+<!--
+.reviewbar { width: 658px; font-size:12px; border:1px solid #AACCEE; margin-top:7px;}
+.reviewbar .reviewtitle { width: 656px; height:26px; margin:1px auto; background:url(/themes/default/images/place_bg.gif) bottom repeat-x; border-bottom:1px solid #AACCEE;}
+.reviewbar .reviewtitle .title { float:left; margin:5px 0px 0px 12px; color: #00599B; display:inline;}
+.reviewbar .reviewtitle .title strong { color: #00599B; margin-right:10px;}
+.reviewbar .reviewtitle .gotopost { float:right; display:block; width:100px; height:23px; }
+.reviewbar .reviewtitle .gotopost a { width:95px; height:22px; display:inline; float:right; text-align:center; line-height:22px; text-decoration:none; background:url(/style/common/gotopost.gif) no-repeat; margin:1px 3px 0px 0px; }
+.reviewbar .reviewbox { width: 658px; margin:0;}
+.reviewbar .reviewbox .review-each { width: 638px; margin:10px auto; padding:0px; border:1px solid #AACCEE;}
+.reviewbar .reviewbox .review-each-t { width: 638px; margin:0px auto; background: #F4F9FD; line-height:25px;height:25px; border-bottom:1px solid #AACCEE;}
+.reviewbar .reviewbox .review-each-t span.a{font-size:12px;float:left;padding-left:10px;}
+.reviewbar .reviewbox .review-each-t span.b{font-size:12px;float:right;padding-right:10px;color:#669933;cursor:pointer;}
+.reviewbar .reviewbox .review-each-b { width: 618px; margin:0px auto; padding:10px; line-height:25px;word-break: break-all;}
+.reviewbar .reviewbox .review-each-content { width: 616px; margin:0 auto;}
+.reviewbar .reviewbox .review-each-reply { width: 616px; margin:10px auto 0px; border:1px solid #AACCEE;}
+.reviewbar .reviewbox .review-each-reply-t { width: 614px; margin:0px auto; color:#FF5500; background: #F4F9FD; line-height:25px;height:25px; border-bottom:1px solid #AACCEE;}
+.reviewbar .reviewbox .review-each-reply-b {width: 594px; margin:0px auto; color:#FF5500; padding:10px; font-size:13px; line-height:25px; }
+ 
+ 
+ 
+.reviewbar .posttitle { width: 656px; height:26px; margin:10px auto; background:url(/themes/default/images/place_bg.gif) bottom repeat-x; border-top:1px solid #AACCEE; border-bottom:1px solid #AACCEE;}
+.reviewbar .posttitle strong { color: #00599B; display:block; margin:7px 0px 0px 13px;}
+.reviewbar .postbox { width: 656px; margin:5px auto; overflow:hidden;}
+.reviewbar .postbox .userbox { width: 635px; overflow:hidden; margin:10px;}
+.reviewbar .postbox .userbox dl { width: 635px;}
+.reviewbar .postbox .userbox dl dd { float:left; display:block; padding-bottom:2px; }
+.reviewbar .postbox .userbox input.username { width:100px; height:18px; border:1px solid #AACCEE; margin-right:10px;}
+.reviewbar .postbox .userbox input.password { width:100px; height:18px; border:1px solid #AACCEE; margin-right:10px;}
+.reviewbar .postbox .userbox input.code { width:56px; height:18px; border:1px solid #AACCEE; margin-right:0px;}
+.reviewbar .postbox .userbox dl dd.mtop { margin-left:10px; }
+.reviewbar .postbox .txtbox { width: 555px; line-height:25px; margin-left:10px;}
+.reviewbar .postbox .txtbox textarea { border:1px solid #AACCEE; width: 490px; height:80px; padding:5px;}
+.reviewbar .postbox .sbut { margin:10px; }
+.reviewbar .postbox .userbox .s { width:63px; height:21px; cursor:pointer; margin:0px; background:url(/themes/default/images/btn_review.gif) no-repeat; border:none; }
+.reviewbar .postbox .userbox .l { width:63px; height:21px; cursor:pointer; margin:0px; background:url(/themes/default/images/btn_loginin.gif) no-repeat; border:none; }
+.reviewbar .postbox .userbox .r { width:63px; height:21px; cursor:pointer; margin:0px; background:url(/themes/default/images/btn_register.gif) no-repeat; border:none; }
+-->
+</style>
+
+<script type="text/javascript">
+var CurrentUserId = "0";
+var CurrentAdminLogined = "0";
+var page=thispage();
+$(document).ready(function() {
+	$.ajax({
+		type:		"get",
+		dataType:	"json",
+		data:		"time="+(new Date().getTime()),
+		url:		site.Dir + "ajax/user.aspx?oper=ajaxUserInfo",
+		error:		function(XmlHttpRequest,textStatus, errorThrown){if(XmlHttpRequest.responseText!=""){alert(XmlHttpRequest.responseText);}},
+		success:	function(data){
+			//数据绑定
+			CurrentUserId = data.userid;
+			CurrentAdminLogined = data.adminlogined;
+			ajaxReviewList({$_channelid},{$_id},page);
+		}
+	});
+});
+function ajaxReviewList(ccid,id,page)
+{
+	$.ajax({
+		type:		"get",
+		dataType:	"json",
+		data:		"oper=ajaxReviewList&ccid="+ccid+"&id="+id+"&page="+page+"&time="+(new Date().getTime()),
+		url:		site.Dir + "review/ajax.aspx",
+		error:		function(XmlHttpRequest,textStatus, errorThrown){if(XmlHttpRequest.responseText!=""){alert(XmlHttpRequest.responseText);}},
+		success:	function(d){
+			switch (d.result)
+			{
+			case '0':
+				alert(d.returnval);
+				break;
+			case '1':
+				$("#ajaxReviewList").setTemplateElement("tplList", null, {filter_data: false});
+				$("#ajaxReviewList").processTemplate(d);
+				$("#ajaxPageBar").html(d.pagerbar);
+				break;
+			}
+
+		}
+	});
+}
+</script>
+</head>
+<body>
+<div class="jbody">
+	<jcms:include file="~/_data/html/header.htm" />
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	<div class="main pbody">
+		<div class="my-left">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"></div>
+				<div class="placenav"><a href="<jcms:site.home/>" class="home"></a>&nbsp;&raquo;&nbsp;内容评论 </div>
+			</div>
+			<div class="newsview">
+				<div class="title">
+					<h1 title="{$_title}" id="title"><a href="{$_firstpage}">{$_title}</a></h1>
+				</div>
+				<div class="clear">
+					<!--~清除浮动~-->
+				</div>
+			</div>
+			<div class="reviewbar">
+				<div class="reviewtitle">
+					<div class="title"> <strong>评论列表</strong></div>
+					<div class="gotopost"> </div>
+				</div>
+				<div class="reviewbox">
+<textarea id="tplList" style="display:none">
+{#foreach $T.table as record}<a name="c{$T.record.id}"></a>
+<div class="review-each">
+	<div class="review-each-t">
+		<span class="a"><strong>{$T.record.username}</strong> 发表于：{$T.record.adddate}</span>
+		{#if CurrentAdminLogined =="1"}
+			{#if $T.record.replyusername == ""}<span class="b" onclick="ajaxReviewReply2({$T.record.id});">回复</span>{#/if}
+			<span class="b" onclick="ajaxReviewDelete({$_channelid},{$_id},{$T.record.id});">删除</span>
+		{#/if}
+	</div>
+	<div class="review-each-b">
+		<div class="review-each-content">{$T.record.content}</div>
+		{#if $T.record.replyusername != ""}
+		<div class="review-each-reply">
+			<div class="review-each-reply-t"><strong>{$T.record.replyusername}</strong> 回复于：{$T.record.replyadddate}</div>
+			<div class="review-each-reply-b">{$T.record.replycontent}</div>
+		</div>
+		{#/if}
+	</div>
+	<div class="clear"></div>
+</div>
+{#/for} 
+</textarea>
+
+					<div id="ajaxReviewList"><div style="margin:10px auto;width:32px;"><img src="{site.Dir}style/loading/01.gif" border="0"></div></div>
+					<div id="ajaxPageBar" class="pages"></div>
+				</div>
+				<div class="clear"></div>
+				<div class="posttitle"> <strong id="posttitle">发表评论</strong></div>
+					<div class="postbox">
+						<div class="txtbox"> <span class="reviewName">匿名游客</span> <span id="guest_btn" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<a href="{site.Dir}passport/login.aspx">登录</a>] [<a href="{site.Dir}passport/register.aspx">注册</a>] </span><br />
+							<input type="hidden" name="reviewParentId" id="reviewParentId" value="0">
+							<textarea name="reviewContent" id="reviewContent" rows="4" style="width:98%"></textarea>
+						</div>
+						<div class="userbox">
+							<dl>
+								<dd style="display:none;"> 用户名：
+									<input name="reviewName" id="reviewName" class="username" type="text" maxlength="20" style="width:120px;" />
+								</dd>
+								<dd> 验证码：
+									<input name="reviewCode" id="reviewCode" class="code" type="text" maxlength="6" style="ime-mode:disabled;" onpaste="return false" />
+									<img id="imgCode" onclick="_jcms_GetRefreshCode('imgCode');" src="" align="absmiddle" style="cursor: pointer" /><a href="javascript:void(0);" id="_vcode_txt" onclick="_jcms_GetRefreshCode('imgCode');return false;">换一换</a> <img id="imgRead" src="{site.Dir}style/common/maintb.gif" align="absmiddle" style="cursor: pointer" alt="收听验证码" title="收听验证码" onclick="PlayCodeVoice('player');" /><span id="player"></span> </dd>
+								<dd class="mtop">
+									<input type="button" id="btnReviewAdd" name="btnReviewAdd" onclick="ajaxReviewAdd({$_channelid},{$_id})" value="" class="s" />
+								</dd>
+							</dl>
+						</div>
+					</div>
+			</div>
+			<script>ajaxReviewUserInfo();</script>
+		</div>
+		<div class="my-right">
+			<div class="rightlist mt5">
+				<div class="title"><strong>最新评论</strong></div>
+				<div class="body gplist">
+					<dl>
+						<dd>
+							<ul><script src="{site.Dir}review/toplist.aspx?ccid={$_channelid}&id=0&pagesize=8"></script></ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<jcms:include file="~/_data/html/footer.htm" />
+</div>
+<script type="text/javascript">$('#topnav li.channel{$_channelid}').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

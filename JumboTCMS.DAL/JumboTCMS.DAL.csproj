@@ -1,0 +1,174 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{68838DAD-7414-43B4-9074-5951AC0D7CB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JumboTCMS.DAL</RootNamespace>
+    <AssemblyName>JumboTCMS.DAL</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/JumbotCms.DataObject/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\UsingDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminDAL.cs" />
+    <Compile Include="Common.cs" />
+    <Compile Include="LanguageDAL.cs" />
+    <Compile Include="normal\DiggDAL.cs" />
+    <Compile Include="normal\QuestionDAL.cs" />
+    <Compile Include="normal\LinkDAL.cs" />
+    <Compile Include="extends\PlacardDAL.cs" />
+    <Compile Include="extends\QQOnlineDAL.cs" />
+    <Compile Include="normal\ReviewDAL.cs" />
+    <Compile Include="extends\VoteDAL.cs" />
+    <Compile Include="ModuleContentDAL.cs" />
+    <Compile Include="module\ArticleDAL.cs" />
+    <Compile Include="ModuleCommand.cs" />
+    <Compile Include="module\DocumentDAL.cs" />
+    <Compile Include="module\IModule.cs" />
+    <Compile Include="module\PaperDAL.cs" />
+    <Compile Include="module\PhotoDAL.cs" />
+    <Compile Include="module\ProductDAL.cs" />
+    <Compile Include="module\SoftDAL.cs" />
+    <Compile Include="module\VideoDAL.cs" />
+    <Compile Include="normal\AdminlogsDAL.cs" />
+    <Compile Include="normal\AdvDAL.cs" />
+    <Compile Include="normal\ChannelDAL.cs" />
+    <Compile Include="normal\ClassDAL.cs" />
+    <Compile Include="normal\EmaillogsDAL.cs" />
+    <Compile Include="normal\ExtendsDAL.cs" />
+    <Compile Include="normal\ForbidipDAL.cs" />
+    <Compile Include="normal\RechargeDAL.cs" />
+    <Compile Include="normal\SpecialContentDAL.cs" />
+    <Compile Include="normal\SpecialDAL.cs" />
+    <Compile Include="normal\TagDAL.cs" />
+    <Compile Include="normal\TemplateDAL.cs" />
+    <Compile Include="normal\TemplateProjectDAL.cs" />
+    <Compile Include="normal\ThumbsDAL.cs" />
+    <Compile Include="normal\UserCartDAL.cs" />
+    <Compile Include="normal\UserDAL.cs" />
+    <Compile Include="normal\UserFriendsDAL.cs" />
+    <Compile Include="normal\UserGoodsDAL.cs" />
+    <Compile Include="normal\UserLogsDAL.cs" />
+    <Compile Include="normal\UserMailDAL.cs" />
+    <Compile Include="normal\UserMessageDAL.cs" />
+    <Compile Include="normal\UserNoticeDAL.cs" />
+    <Compile Include="normal\UserOAuthDAL.cs" />
+    <Compile Include="normal\UserOrderDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="normal\PageDAL.cs" />
+    <Compile Include="SiteDAL.cs" />
+    <Compile Include="TemplateEngineDAL.cs" />
+    <Compile Include="TemplateTagDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JumbotCms.API\JumboTCMS.API.csproj">
+      <Project>{541AA19D-92EF-4ADF-A0E2-49624E966D64}</Project>
+      <Name>JumboTCMS.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JumbotCms.Utils\JumbotCms.Utils.csproj">
+      <Project>{E42D51BB-0368-4BBC-BF69-89F11B42E675}</Project>
+      <Name>JumbotCms.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JumbotCms.Common\JumboTCMS.Common.csproj">
+      <Project>{A6A92841-611C-45F1-8F9D-8DBF4838D839}</Project>
+      <Name>JumboTCMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JumbotCms.DBUtility\JumbotCms.DBUtility.csproj">
+      <Project>{766FE721-218A-4645-9DEC-C4FFDD82F147}</Project>
+      <Name>JumbotCms.DBUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JumbotCms.Entity\JumbotCms.Entity.csproj">
+      <Project>{06C57D9A-1371-4FA7-BBAF-4ADD4F5B6D98}</Project>
+      <Name>JumbotCms.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JumbotCms.TEngine\JumboTCMS.TEngine.csproj">
+      <Project>{8EDEE1BC-1BD8-45E2-88D0-8108218E766F}</Project>
+      <Name>JumboTCMS.TEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,30 @@
+﻿	<div class="topbar">
+		<div id="user_status" class="loginbar" style="display:none;"><ul><li class="login" id="btnLogin"><a href="{site.Dir}passport/login.aspx" title="登录">登录</a></li><li class="register"><a href="{site.Dir}passport/register.aspx" title="注册">注册</a></li></ul></div>
+		<div class="floatright topurl">
+			<ul class="navigation">
+				<li><a title="网站源码" class="i-chinaz" href="http://down.chinaz.com" target="_blank">站长下载</a></li>
+				<li><a title="A5源码" class="i-admin5" href="http://down.admin5.com" target="_blank">A5源码</a></li>
+				<li><a title="Asp.net源码专业站" class="i-51aspx" href="http://www.51aspx.com" target="_blank">51Aspx</a></li>
+				<li><a title="赞助我们" class="i-support" href="http://www.jumbotcms.net/about/support.html" target="_blank">赞助我们</a></li>
+				<li><a title="邮箱订阅" class="i-subscribe" href="http://list.qq.com/cgi-bin/qf_invite?id=758333a75b9092a2300419cafd1b0e059427b776007bdf50" target="_blank">邮箱订阅</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="top pbody">
+		<div class="toplogo"><h1><a href="<jcms:site.dir/>"><jcms:site.name/></a></h1></div>
+		<div class="topbanner"><jcms:include file="~/_data/html/more/1.htm" /></div>
+		<div class="toplink"><jcms:include file="~/_data/html/more/4.htm" /></div>
+	</div>
+	<div id="topnav" class="clearfix">
+		<ul class="topnav_content">
+			<li class="index"><a href="/"><span title="首页">首页</span></a></li>
+<jcms:channelloop repeatnum="5" orderfield="pid" ordertype="asc">
+				<li class="channel{$ChannelId}"><a href="{$ChannelLink}" title="{$ChannelName}"><span>{$ChannelName}</span></a></li>
+</jcms:channelloop>
+			<li class="feedback"><a href="/question/" target="_blank" title="提问"><span>提问</span></a></li>
+			<li class="last"><a href="http://www.jumbot-cms.net/" target="_blank" title="演示站"><span>演示站</span></a></li>
+		</ul>
+		<div class="topnav_right"></div>
+	</div>
+	<div class="clear"></div>
+<!--~官方取5个频道是因为导航条最多能放8个~-->

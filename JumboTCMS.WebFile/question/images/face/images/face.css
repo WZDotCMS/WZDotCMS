@@ -1,0 +1,115 @@
+.face-div { position:relative; height:19px; left:5px; margin:0; _margin:0 0 -2px 0;}
+.face { position:absolute; top:0; _top:-1px; left:0; line-height:19px; height:19px; cursor:pointer;}
+.face span{ float:left; display:block;}
+.face .icon { width:18px; height:18px; background:url(ico_face_default.gif) no-repeat 0 0; border:1px solid #b8d2e6; border-bottom:none;}
+.face .select a{ width:7px; height:18px;overflow:hidden; display:block;text-indent:-9999px; white-space:nowrap; line-height:0; border-top:1px solid #b8d2e6; border-right:1px solid #b8d2e6; border-left:none; background:#e6f4ff url(ico_face_arrow.gif) no-repeat center center; }
+
+
+/* Caution! Ensure accessibility in print and other media types... */
+.face-list-div { position:absolute; bottom:-1px; left:27px; width:350px; height:228px; border:1px solid #b5e1e6; background:url(bg_face_box.gif) repeat-x 0 bottom #fff; z-index:990;}
+.face-nav { position:absolute; bottom:2px; left:10px; z-index:999;}
+.face-subnav  { background:url(bg_face_subtab.gif) repeat-x 0 bottom; width:350px; height:23px; position:absolute; bottom:23px; right:0;font-size:10px; z-index:990;}
+.face-subnav ul{ position:absolute; right:10px;}
+.face-close { background:url(ico_face_close.gif) no-repeat 0 0; width:25px; height:22px; position:absolute; right:0; bottom:0; cursor:pointer;}
+
+.face-box { padding:7px; position:absolute; top:-182px; left:0; width:350px;}
+.face-list { float:left; margin:2px; display:inline;}
+.face-list-48 { float:left; margin:4px; display:inline;}
+
+@media projection, screen { /* Use class for showing/hiding tab content, so that visibility can be better controlled in different media types... */
+    .ui-tabs-hide { display: none;}
+}
+
+/* Hide useless elements in print layouts... */
+@media print {
+    .ui-tabs-nav {display: none;}
+}
+
+/* Skin */
+.ui-tabs-nav {margin:0; padding:0;}
+.ui-tabs-nav:after { /* clearing without presentational markup, IE gets extra treatment */
+    display: block;
+    clear: both;
+    content: " ";
+}
+.ui-tabs-nav li {float: left; margin: 0 0 0 0px;}
+.ui-tabs-nav a, .ui-tabs-nav a span { display: block; padding: 0 5px; background: url(bg_face_tab.gif) no-repeat;}
+.ui-tabs-nav a {
+    margin: 1px 0 0; /* position: relative makes opacity fail for disabled tab in IE */
+    padding-left: 0;
+	padding-right:2px;
+    color: #164a63;
+    line-height: 21px;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap; /* required in IE 6 */    
+    outline: 0;/* prevent dotted border in Firefox */
+}
+.ui-tabs-nav .ui-tabs-selected a {
+    position: relative;
+    top: 1px;
+    z-index: 2;
+    margin-top: 0;
+	font-weight:bold;
+}
+.ui-tabs-nav a span {
+    width: 40px; /* IE 6 treats width as min-width */
+    min-width: 40px;
+    line-height: 21px;
+    padding: 0 10px;
+}
+*>.ui-tabs-nav a span { /* hide from IE 6 */ width: auto;  height: auto;}
+
+.ui-tabs-nav .ui-tabs-selected a span { padding-bottom: 1px;}
+
+.ui-tabs-nav .ui-tabs-selected a,
+.ui-tabs-nav a:hover,
+.ui-tabs-nav a:focus,
+.ui-tabs-nav a:active { background-position: 100% -90px;}
+
+.ui-tabs-nav a,
+.ui-tabs-nav .ui-tabs-disabled a:hover,
+.ui-tabs-nav .ui-tabs-disabled a:focus,
+.ui-tabs-nav .ui-tabs-disabled a:active {background-position: 100% -60px;}
+
+.ui-tabs-nav .ui-tabs-selected a span,
+.ui-tabs-nav a:hover span,
+.ui-tabs-nav a:focus span,
+.ui-tabs-nav a:active span { background-position: 0 -30px;}
+
+.ui-tabs-nav a span,
+.ui-tabs-nav .ui-tabs-disabled a:hover span,
+.ui-tabs-nav .ui-tabs-disabled a:focus span,
+.ui-tabs-nav .ui-tabs-disabled a:active span { background-position: 0 0;}
+
+.ui-tabs-nav .ui-tabs-selected a:link,
+.ui-tabs-nav .ui-tabs-selected a:visited,
+.ui-tabs-nav .ui-tabs-disabled a:link,
+.ui-tabs-nav .ui-tabs-disabled a:visited { /* @ Opera, use pseudo classes otherwise it confuses cursor... */ cursor: default;}
+
+.ui-tabs-nav a:hover,
+.ui-tabs-nav a:focus,
+.ui-tabs-nav a:active,
+.ui-tabs-nav .ui-tabs-deselectable a:hover,
+.ui-tabs-nav .ui-tabs-deselectable a:focus,
+.ui-tabs-nav .ui-tabs-deselectable a:active { /* @ Opera, we need to be explicit again here now... */ cursor: pointer;}
+
+.ui-tabs-disabled { opacity: .4;filter: alpha(opacity=40);}
+
+.ui-tabs-panel { padding:0; background: #fff; /* declare background color for container to avoid distorted fonts in IE while fading */}
+
+.ui-tabs-loading em { width:85px; height:22px; overflow:hidden; text-indent:-9999px; display:block; background: url(ico_face_loading.gif) no-repeat 0 50%; position:absolute; top:0; left:-90px;}
+
+/* Additional IE specific bug fixes... */
+* html .ui-tabs-nav { /* auto clear, @ IE 6 & IE 7 Quirks Mode */ display: inline-block;}
+
+*:first-child+html .ui-tabs-nav  { /* @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */ display: inline-block;}
+
+
+
+.face-subnav .ui-tabs-nav li { text-align:center; min-width: 12px; /* be nice to Opera */}
+
+.face-subnav .ui-tabs-nav a,.face-subnav .ui-tabs-nav a span { background:none;}
+.face-subnav .ui-tabs-nav a,.face-subnav .ui-tabs-nav a span { width:18px; min-width:18px; padding: 0;}
+
+

@@ -1,0 +1,21 @@
+﻿2011-9-4 10:19:20
+有0条已阅读的站内信被删除；有0条已阅读的通知被删除
+2011-9-4 10:19:40
+有0个未激活的会员被删除
+2011-9-4 10:20:00
+页面获取失败
+2011-9-4 10:24:40
+有0个未激活的会员被删除
+2011-9-4 10:25:00
+2011-9-4 10:25:00开始更新
+<pre>Offending URL: http://localhost:1104/tools/weather/update.aspx?password=3f6D7A786B72CC90
+Source: JumbotCms.Tools
+Message: 外部组件发生异常。
+Stack trace:    在 JumbotCms.Tools.Weather.DAL.GetWeatherJSON(String CityCode)
+   在 JumbotCms.WebForm.Tools.Weather._update.DownLoad(String CityCode) 位置 E:\Jumbot\JumbotCms!NET4.4.2\JumbotCms_WebWAN\JumbotCms.WebFile\tools\weather\update.aspx.cs:行号 70
+   在 JumbotCms.WebForm.Tools.Weather._update.Page_Load(Object sender, EventArgs e) 位置 E:\Jumbot\JumbotCms!NET4.4.2\JumbotCms_WebWAN\JumbotCms.WebFile\tools\weather\update.aspx.cs:行号 59
+   在 System.Web.Util.CalliHelper.EventArgFunctionCaller(IntPtr fp, Object o, Object t, EventArgs e)
+   在 System.Web.Util.CalliEventHandlerDelegateProxy.Callback(Object sender, EventArgs e)
+   在 System.Web.UI.Control.OnLoad(EventArgs e)
+   在 System.Web.UI.Control.LoadRecursive()
+   在 System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)</pre>

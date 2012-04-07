@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><jcms:site.page.title/></title>
+<meta http-equiv="Content-Language" content="zh-CN" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta name="keywords" content="<jcms:site.page.keywords/>" /><meta name="description" content="<jcms:site.page.description/>" /><meta name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<base href="<jcms:site.page.basehref/>">
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	
+	<div class="main pbody">
+		<div class="my-left">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><jcms:site.page.nav/> </div>
+			</div>
+			<div class="contenter">
+				<div class="stitle mt5" ondblclick="ShowEditDiv('{$ChannelType}',{$ChannelId},{$_id})"> {$ChannelItemName}名称：{$_title}</div>
+				<!--~内容浏览~-->
+				<div class="productview mt5">
+					<!--{$ChannelItemName}信息-->
+					<div class="sinfo"><form id="frm_buy" action="" method="post" target="_blank">
+						<!--~缩略图~-->
+						<div class="spic"> <img src="{$_img}" width="282" height="206" alt="{$_title}" /></div>
+						<ul>
+							<li><span>会员价：</span> <span class="p-points">{$Points}</span>元</li>
+							<li><span>市场价：</span> <span class="p-price0">{$Price0}</span>元</li>
+							<li><span>更新时间：</span> {$_adddate}</li>
+							<li><span>厂商/作者：</span> {$_author}</li>
+							<li><span>浏览次数：</span> {$_viewnum}</li>
+							<li class="h40 hide"><span>购买数量：</span> <input type="text" id="txtBuyCount" name="txtBuyCount" value="1" /> 件<br /><span id="tipBuyCount" style="width:120px;"> </span></li>
+						</ul>
+						<div class="div-buy"><input type="hidden" name="txtChannelId" value="{$ChannelId}" /><input type="hidden" name="txtProductId" value="{$_id}" /><input type="hidden" name="txtProductName" value="{$_title}" />
+							<input type="button" value="" id="btnBuy" class="btn-buy" onclick="sub('buy');" />
+							<input type="button" value="" id="btnCart" class="btn-cart" onclick="sub('cart');"  />
+						</div>
+					</form></div>
+					<!--详情-->
+					<div class="stitle"> {$ChannelItemName}详情</div>
+					<div class="sintro"> {$_content} </div>
+					<div class="clear"><!--~清除浮动~--></div>
+					<div class="newsother"><div class="divDigg"><script type="text/javascript" src="{site.Dir}digg/default.aspx?id={$_id}&cType={$ChannelType}"></script></div></div>
+					<div class="clear"><!--~清除浮动~--></div>
+					<!--~操作~-->
+					<div class="operbar"><div class="share"><!--#include virtual="/_data/shtm/share.htm" --></div><span class="r">[<a href="{site.Dir}review/default.aspx?ccid={$ChannelId}&ctype={$ChannelType}&id={$_id}">发表评论</a>]</span> <span class="r">[<a href="javascript:addFavorite({$ChannelId},'{$ChannelType}',{$_id});" title="本站会员收藏">本站收藏</a>]</span></div>
+					
+					<div class="context">
+						<div class="neightor"> {$_getNeightor()} </div>
+					</div>
+					<div class="clear"><!--~清除浮动~--></div>
+				</div>
+			</div>
+		</div>
+		<div class="my-right">
+			<div class="rightlist mt5">
+				<div class="title"><strong>相关{$ChannelItemName}</strong></div>
+				<div class="body gplist">
+					<dl>
+						<dd>
+<jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title" wherestr="id小于{$_id}" islike="1" keywords="{$_tags}">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="rightbox1 mt5">
+				<div class="bar1" id="CTab">
+					<a href="#CxTab1" class="s">最新{$ChannelItemName}</a>
+					<a href="#CxTab2">推荐{$ChannelItemName}</a>
+				</div>
+				<div>
+					<div id="CShow" class="body"></div>
+					<div style="display:none;" id="CxTab1"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor" wherestr="id<={$_id}">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div style="display:none;" id="CxTab2"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor" wherestr="id<={$_id}" istop="1">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab3=new jTab('CTab','CShow','more');</script>
+			<div class="right-baidu"><!--#include virtual="/_data/shtm/more/5.htm" --></div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">$('#topnav li.channel{$ChannelId}').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$.formValidator.initConfig({onError:function(msg){}});
+	$("#txtBuyCount").formValidator({tipid:"tipBuyCount",onshow:"",onfocus:"请输入非零数字"})
+		.RegexValidator({regexp:"^\([1-9][0-9]*)$",onerror:"请输入非零数字"})
+		.InputValidator({min:1,max:{$ProductMaxBuyCount},type:"number",onerror:"每次最多能买{$ProductMaxBuyCount}件"});
+});
+function sub(type){
+	if(!$.formValidator.PageIsValid('1'))
+		return;
+	$i('frm_buy').action='{site.Dir}plus/product_'+type+'.aspx';
+	$i('frm_buy').submit();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   name="robots" content="noindex, nofollow" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>
+<jcms:site.page.title/>
+</title>
+<meta   name="description" content="<jcms:site.page.description/>" />
+<meta   name="keywords" content="<jcms:site.page.keywords/>" />
+<meta   name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+</head>
+<body>
+<div class="jbody">
+  <!--#include virtual="/_data/shtm/header.htm" -->
+  <div class="main pbody">
+    <div class="mybody">
+      <!--~位置导航~-->
+      <div class="thispagenav mt5">
+        <div class="title"> </div>
+        <div class="placenav"><a href="<jcms:site.home/>" class="home"></a>&nbsp;&raquo;&nbsp;RSS订阅</div>
+      </div>
+      <div class="contenter0">
+        <div class="maplist">
+          <div class="maplist-main clearfix">
+            <div class="maplist-side">
+              <ul class="maplist-leftmenu">
+                <!--~<jcms:channelloop repeatnum="100" isnav="1" orderfield="pid" ordertype="asc">~-->
+                <li id="maplist-leftmenu{$ChannelId}"><a title='{$ChannelName}'>{$ChannelName}</a></li>
+                <!--~</jcms:channelloop>~-->
+              </ul>
+            </div>
+            <div class="maplist-content">
+              <!--~<jcms:channelloop repeatnum="100" isnav="1" orderfield="pid" ordertype="asc">~-->
+              <div class="maplist-content-channel" style="display:none">
+                <!--~<jcms:classtree channelid="{$ChannelId}" classid="0">~-->
+                <!--~<#foreach collection="${tree.subchild}" var="class0" index="i">~-->
+                <dl>
+                  <dt><a href='${class0.rssurl}' title='${class0.name}' target='_blank'>${class0.name}</a></dt>
+                  <!--~<#if test="${notequals(class0.subchild.count, 0)}">~-->
+                  <dd>
+                    <!--~<#foreach collection="${class0.subchild}" var="class1" index="j">~-->
+                    <a href='${class1.rssurl}' title='${class1.name}' target='_blank'>${class1.name}</a>
+                    <!--~<#/foreach>~-->
+                  </dd>
+                  <!--~<#/if>~-->
+                </dl>
+                <!--~<#/foreach>~-->
+                <!--~</jcms:classtree>~-->
+              </div>
+              <!--~</jcms:channelloop>~-->
+            </div>
+          </div>
+          <div class="maplist-bom"></div>
+<script type="text/javascript">
+function SwitchMenu(n){
+	$('.maplist-leftmenu li.current').removeClass('current');
+	$('.maplist-content-channel:visible').hide();
+	$('.maplist-leftmenu li').eq(n).addClass('current');
+	$('.maplist-content-channel').eq(n).show();
+}
+SwitchMenu(0);
+$('.maplist-leftmenu li').each(function(i) {
+	$(this).find('a:first').click(function() {
+		SwitchMenu(i);
+	});
+});
+</script>
+        </div>
+      </div>
+    </div>
+    <div class="clear">
+      <!--~清除浮动~-->
+    </div>
+  </div>
+  <!--~页面底部~-->
+  <!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

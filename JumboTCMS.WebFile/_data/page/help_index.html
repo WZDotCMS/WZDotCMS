@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>帮助中心 - <jcms:site.name/></title>
+<meta   name="description" content="<jcms:site.page.description/>" />
+<meta   name="keywords" content="<jcms:site.page.keywords/>" />
+<meta   name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV4.3.1.js"></script>
+<link rel="stylesheet" type="text/css" href="{site.Dir}_data/jcmsV4.3.1.css" />
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/<jcms:site.page.theme/>/css/global.css" id="cssTheme" />
+</head>
+<script type="text/javascript">
+(function(){
+	$(document).ready(function() {
+		var id = anchor();
+		if(id!="1" && id!="2" && id!="3" && id!="4" && id!="5") id="1";
+		ajaxShowHelp(id);
+	});
+	ajaxShowHelp=function(id){
+		$("#ajaxHelp").setTemplateElement("tplHelp"+id, null, {filter_data: true});
+		$("#ajaxHelp").processTemplate({});
+	}
+})();
+</script>
+<style type="text/css">
+<!--
+#ajaxHelp {
+	color: #000000;
+	font-size: 12px;
+	height: auto;
+	line-height: 20px;
+}
+.menuleft span {
+	color: #333333;
+	height: 20px;
+	line-height: 20px;
+}
+.menuleft a:link {
+	color: #333333;
+	text-decoration: none;
+}
+.menuleft a:visited {
+	text-decoration: none;
+	color: #666666;
+}
+.menuleft a:hover {
+	text-decoration: underline;
+	color: #666666;
+}
+.menuleft a:active {
+	text-decoration: none;
+	color: #666666;
+}
+-->
+</style>
+<body>
+<div class="jbody">
+	<div class="topbar">
+		<div id="user_status" class="loginbar" style="display:none;"><ul><li class="user"><a href="{site.Dir}passport/login.aspx" title="登录">登录</a></li><li class="hr">|</li><li><a href="{site.Dir}passport/register.aspx" title="注册">注册</a></li><li><a href="{site.Dir}passport/getpassword.aspx" title="忘记密码">忘记密码</a></li></ul></div>
+		<div class="floatright topurl"><jcms:include file="~/_data/html/j_topurl.htm" /></div>
+	</div>
+	<div class="top pbody">
+		<div class="toplogo">
+			<h1><a href="<jcms:site.url/><jcms:site.dir/>"><jcms:site.name/></a></h1>
+		</div>
+		<div class="topbanner">
+			<script src="{site.Dir}_data/style/j_banner.js"></script>
+		</div>
+		<div class="toplink">
+			<script src="{site.Dir}_data/style/toplink.js"></script>
+		</div>
+	</div>
+	<!--~导航条~-->
+	<script src="{site.Dir}_data/style/j_navigation.js"></script>	
+	<div class="main pbody">
+		<div class="myleft">
+			<div class="rightlist mt5">
+				<div class="title">问题列表</div>
+				<div class="body gplist">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="menuleft">
+						<tr>
+							<td width="16%" height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td width="80%"><a href="#1" onclick="ajaxShowHelp(1);"><span><strong>注册/资格审核</strong></span></a></td>
+							<td width="4%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>如何注册会员？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>注册用户时需要注意哪些问题？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>为什么要填写邮箱地址？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>会员名可以更改吗？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>注册时密码设置有什么要求？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td><a href="#2" onclick="ajaxShowHelp(2);"><span><strong>用户资料/密码修改</strong></span></a></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>为什么要完善会员资料？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>忘记登录密码怎么办？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>忘记账号怎么办？ </span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>我想修改密码，怎么操作？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>如何修改个人资料？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td><a href="#3" onclick="ajaxShowHelp(3);"><span><strong>帐户/积点</strong></span></a></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>如何充值我的个人帐户？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>如何查看我的帐户情况？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><span>不通过充值如何提高我的点数？</span></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td><a href="#4" onclick="ajaxShowHelp(4);"><span><strong>用户等级说明</strong></span></a></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td><a href="#5" onclick="ajaxShowHelp(5);"><span><strong>会员充值流程</strong></span></a></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td height="25"><div align="center"><img src="{site.Dir}style/common/ico_3.gif" border="0" /></div></td>
+							<td><a href="#5" onclick="ajaxShowHelp(6);"><span><strong>投拆与留言</strong></span></a></td>
+							<td>&nbsp;</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="myright">
+			<!--位置导航-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"> <span>当前位置 :</span> <a href="{site.Dir}">首页</a>&nbsp;&raquo;&nbsp;帮助中心</div>
+			</div>
+			<div class="contenter">
+<textarea id="tplHelp1" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">注册/资格审核</h2>
+			<br />
+			<strong>一、如何注册会员？ </strong><br />
+			① 登录{$T.name}，点击页面上方“注册”。 <br />
+			② 进入注册页面，按照提示填写符合要求的会员名和密码。 <br />
+			③ 输入一个您常用的电子邮件地址，用于接受信息和找回密码。 <br />
+			④ 将验证码数字填入输入框中。 <br />
+			⑤ 仔细阅读《会员注册协议》。<br />
+			⑥ 点击提交注册信息，此时注册成功。 <br />
+			<br />
+			<strong>二、注册用户时需要注意哪些问题？ </strong><br />
+			① 会员名：4-20个字符，中英文、数字、下划线（一个中文为2个字符），注册成功将不能修改。<br />
+			② 密码：6-14位组成，建议使用英文字母加数字或符号的组合提高密码安全度。<br />
+			③ 邮箱：邮箱是可以用来接受信息和取回密码的，请填写有效邮箱。<br />
+			④ 验证码：请参照验证码，将数字填入左侧输入框中，不分大小写。如填写错误需重新填写正确才能顺利注册。<br />
+			⑤ 请仔细阅读《会员注册协议》，详细了解{$T.name}的众多规则，方便您使用。<br />
+			<br />
+			<strong>三、为什么要填写邮箱地址？ </strong><br />
+			① 注册邮箱是用户取回密码的唯一方式，可以找回丢失或忘记的密码，可用来登录{$T.name}。<br />
+			② 邮箱是本站和会员之间交流的重要工具，不可修改，具有唯一性，不会被其他人用来进行注册，所以也是鉴别会员身份的一个重要条件。<br />
+			<br />
+			<strong>四、会员名可以更改吗？ </strong><br />
+			会员名是您在本站的身份标识，是唯一并永久的，一旦注册成功，就无法再更改了。如果忘记会员名可以联系本站客服部门，通过核对真实身份信息的方式找回。 <br />
+			<br />
+			<strong>五、注册时密码设置有什么要求？ </strong><br />
+			为了您的账户安全，在注册设置密码时，请参考以下建议： <br />
+			① 密码长度为6到14个字符。<br />
+			② 设置时使用英文字母、数字和符号的组合，尽量不要有规律。
+			</p></td>
+	</tr>
+</table>
+</textarea>
+<textarea id="tplHelp2" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">用户资料/密码修改</h2>
+			<br />
+			<strong> 一、为什么要完善会员资料？ </strong><br />
+			详细完善地填写会员资料，不仅可以充实您的会员主页，对您自身的素质和实力做很好的展示和宣传，同时在您不慎忘记用户名或者在交易过程中需要核对用户真实信息时可以方便快捷地得到客服部门的帮助并尽快解决问题。 <br />
+			<br />
+			<strong> 二、忘记登录密码怎么办？ </strong><br />
+			进入会员登录页面，点击“<a href="{site.Dir}passport/getpassword.aspx" target="_blank">忘记密码</a>” 即可以看到输入您的注册邮箱点击“取回密码”，系统会发一个初始密码到您的邮箱。收到密码后，请立即使用初始密码登录并修改您的登录密码为您自己想要设置的新密码。 <br />
+			<br />
+			<strong> 三、忘记账号怎么办？ </strong><br />
+			忘记用户名您需要联系{$T.name}客服人员说明原委并提供至少一项您注册资料里的真实信息。接到电话后工作人员会通过您所提供的实名资料信息查出对应信息的用户名并根据实名资料里所记录电话与您取得联系，证实身份后把您的用户名和初始密码发到您的注册邮箱。 <br />
+			<br />
+			<strong> 四、我想修改密码，怎么操作？ </strong><br />
+			成功登陆{$T.name}进入会员管理后台，找到“密码修改”，进行密码修改操作输入新密码即可。 <br />
+			<br />
+			<strong> 五、如何修改个人资料？ </strong><br />
+			成功登陆{$T.name}进入会员管理后台，找到“基本资料管理”，进行各项资料修改操作即可，有些资料不可更改。
+			</p></td>
+	</tr>
+</table>
+</textarea>
+<textarea id="tplHelp3" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">帐户/积点</h2>
+			<br />
+			<strong>一、如何充值我的个人帐户？ </strong><br />
+			会员可以联系本站客服人员，通过银行汇款的方式来为自己的账户充值，本站点数1元/点，50点起充。<br />
+			<br />
+			<strong>二、如何查看我的帐户情况？ </strong><br />
+			会员成功登陆{$T.name}，进入会员中心，这里您可以查询到包括会员的级别、点数增减情况及原因，同时也可以查询点数花费的账单和明细清单。 <br />
+			</p></td>
+	</tr>
+</table>
+</textarea>
+<textarea id="tplHelp4" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">用户等级说明</h2>
+			<br />
+			<p><strong>游客</strong></p>
+			<p>可浏览下载本站无点数的内容。</p>
+			<p><strong>普通会员</strong></p>
+			<p>除拥有游客权限外，根据每篇内容的提示的应扣点数下载资料（注：重复下载不会重复扣分）。可通过<a href="{site.Dir}customer/buypoints_default.aspx?mod=customer" target="_top">我要充值</a>并付款后获得相应点数。</p>
+			<p><strong>VIP用户</strong></p>
+			<p>在VIP有效期内，可浏览下载本站所有内容。普通用户可通过<a href="{site.Dir}customer/vipapply_default.aspx?mod=customer" target="_top">我要包年</a>升级到VIP用户。</p></td>
+	</tr>
+</table>
+</textarea>
+<textarea id="tplHelp5" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">会员充值流程</h2>
+			<br />
+			<p><strong>第一步?联系客服</strong></p>
+			<p>新注册的网站会员点数为0，可以通过网站我要充值以便完成网上交易。当会员汇款/转账结束后，可以通过电话、传真、邮件或在线QQ等方式联系客服人员，提供会员名称和充值金额，取得网站帐户信息并约定汇款时间，客服人员将对客户信息进行登记。</p>
+			<p><strong>第二步?银行汇款</strong></p>
+			<p>客户根据网站客服人员提供的账户信息汇款或转帐，并在汇款结束后及时通知客服人员以便尽快开通服务。</p>
+			<p>也可以通过以下几种快捷的在线支付方式：支付宝、快钱、易宝等，具体 <a href="{site.Dir}about/payment.html" target="_blank">点击进入</a>。</p>
+			<p><strong>第三步?确认到帐</strong></p>
+			<p>客服人员在接到客户确认汇款的通知后，应第一时间确认汇款是否到帐并根据记录确认汇款金额和点数。如发现汇款问题应尽快与客户取得联系，沟通解决。</p>
+			<p><strong>第四步?帐户充值</strong></p>
+			<p>确认汇款到帐后应在一个工作日内为客户充值并及时通知客户进行账户信息和点数的核对。</p>
+			<p><strong>第五步?通知会员</strong></p>
+			<p>汇款金额确认无误后，向客户进行确认，确认通过后开通服务。</p>
+			</p></td>
+	</tr>
+</table>
+</textarea>
+<textarea id="tplHelp6" style="display:none">
+<table width="95%" border="0" cellspacing="0" cellpadding="0" align="center">
+	<tr>
+		<td align="left" valign="top"><p style="line-height: 20px; height: auto;">
+			<h2 style="margin-top:10px; font-weight:bold; font-size:14px; height:22px; text-align:center;">投拆与留言</h2>
+			<br />
+			<p>用户在使用与浏览过程中，对本站的服务与质量有何意见与建议请在本站的“投拆与留言”中投拆留言。以便于本站改进服务与质量。 </p></td>
+	</tr>
+</table>
+</textarea>
+				<div class="newslist" id="ajaxHelp"> </div>
+			</div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<div class="footer pbody mt5">
+		<div class="copyright">
+			<div style="font-size:12px;margin-top:10px;">
+				<script src="{site.Dir}_data/style/j_copyright.js"></script>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

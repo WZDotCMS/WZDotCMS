@@ -1,0 +1,163 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06C57D9A-1371-4FA7-BBAF-4ADD4F5B6D98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JumboTCMS.Entity</RootNamespace>
+    <AssemblyName>JumboTCMS.Entity</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/JumbotCms.DataObject/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>false</DebugSymbols>
+    <NoStdLib>false</NoStdLib>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="extends\QQOnline.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="normal\Review.cs" />
+    <Compile Include="normal\Digg.cs" />
+    <Compile Include="normal\Question.cs" />
+    <Compile Include="normal\Link.cs" />
+    <Compile Include="extends\Placard.cs" />
+    <Compile Include="extends\Search.cs" />
+    <Compile Include="extends\Vote.cs" />
+    <Compile Include="MailServer.cs" />
+    <Compile Include="module\Article.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module\Document.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module\Paper.cs" />
+    <Compile Include="module\Photo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module\Product.cs" />
+    <Compile Include="module\Soft.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module\Video.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="normal\Adminlogs.cs" />
+    <Compile Include="normal\Channel.cs" />
+    <Compile Include="normal\Class.cs" />
+    <Compile Include="normal\ClassTree.cs" />
+    <Compile Include="normal\EmailLogs.cs" />
+    <Compile Include="normal\Extends.cs" />
+    <Compile Include="normal\Forbidip.cs" />
+    <Compile Include="normal\Javascript.cs" />
+    <Compile Include="normal\Modules.cs" />
+    <Compile Include="normal\Page.cs" />
+    <Compile Include="normal\PointsCard.cs" />
+    <Compile Include="normal\PointsCardSort.cs" />
+    <Compile Include="normal\Recharge.cs" />
+    <Compile Include="normal\Special.cs" />
+    <Compile Include="normal\SpecialContent.cs" />
+    <Compile Include="normal\Support.cs" />
+    <Compile Include="normal\Tag.cs" />
+    <Compile Include="normal\Template.cs" />
+    <Compile Include="normal\TemplateLabel.cs" />
+    <Compile Include="normal\TemplateProject.cs" />
+    <Compile Include="normal\Thumbs.cs" />
+    <Compile Include="normal\User.cs" />
+    <Compile Include="normal\UserCart.cs" />
+    <Compile Include="normal\UserGoods.cs" />
+    <Compile Include="normal\UserGroup.cs" />
+    <Compile Include="normal\UserApply.cs" />
+    <Compile Include="normal\UserFavorite.cs" />
+    <Compile Include="normal\UserFriends.cs" />
+    <Compile Include="normal\UserLogs.cs" />
+    <Compile Include="normal\UserMessage.cs" />
+    <Compile Include="normal\UserNotice.cs" />
+    <Compile Include="normal\UserOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.cs" />
+    <Compile Include="Weather.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JumbotCms.Utils\JumbotCms.Utils.csproj">
+      <Project>{E42D51BB-0368-4BBC-BF69-89F11B42E675}</Project>
+      <Name>JumbotCms.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

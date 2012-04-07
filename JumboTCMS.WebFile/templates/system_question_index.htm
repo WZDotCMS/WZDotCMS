@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>留言中心 -<jcms:site.name/></title>
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<script type="text/javascript" src="{site.Dir}question/styles/common.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<link   rel="stylesheet" href="images/face/images/face.css" type="text/css">
+<!--表情样式-->
+<script src="images/face/images/face.core.js" type="text/javascript"></script>
+<script src="images/face/images/face.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*
+1=技术支持,2=反馈建议,3=投诉意见,4=其他
+*/
+var classid = q("classid") == "" ? "1" : q("classid");
+var classname = "技术咨询";
+if(classid=="2")
+	classname = "产品咨询";
+else if(classid=="3")
+	classname = "意见建议";
+else if(classid=="4")
+	classname = "其他问题";
+
+var CurrentUserId = "0";
+var CurrentAdminLogined = "0";
+var page=thispage();
+$(document).ready(function() {
+    _jcms_GetRefreshCode('imgCode');
+	$.ajax({
+		type:		"get",
+		dataType:	"json",
+		data:		"time="+(new Date().getTime()),
+		url:		site.Dir + "ajax/user.aspx?oper=ajaxUserInfo",
+		error:		function(XmlHttpRequest,textStatus, errorThrown){if(XmlHttpRequest.responseText!=""){alert(XmlHttpRequest.responseText);}},
+		success:	function(data){
+			//数据绑定
+			CurrentUserId = data.userid;
+			CurrentAdminLogined = data.adminlogined;
+			ajaxQuestionList(page);
+			$(".classname").text(classname);
+			$("#questionClassId").val(classid);
+			if(data.username=="")
+			{
+				$("#questionName").val("匿名游客");
+				$(".questionName").html("匿名游客");
+				$("#guest_btn").show();
+			}
+			else{
+				$("#questionName").val(data.username);
+				$(".questionName").html(data.username);
+				$("#guest_btn").hide();
+			}
+		}
+	});
+	$('#facecont1 ul').tabs({ fx: { opacity: 'toggle' } });
+});
+function ajaxQuestionList(page)
+{
+	$.ajax({
+		type:		"get",
+		dataType:	"json",
+		data:		"oper=ajaxQuestionList&classid="+classid+"&page="+page+"&time="+(new Date().getTime()),
+		url:		site.Dir + "question/ajax.aspx",
+		error:		function(XmlHttpRequest,textStatus, errorThrown){if(XmlHttpRequest.responseText!=""){alert(XmlHttpRequest.responseText);}},
+		success:	function(d){
+			switch (d.result)
+			{
+			case '0':
+				alert(d.returnval);
+				break;
+			case '1':
+				$("#ajaxQuestionList").setTemplateElement("tplList", null, {filter_data: false});
+				$("#ajaxQuestionList").processTemplate(d);
+				$("#ajaxPageBar").html(d.pagerbar);
+				break;
+			}
+		}
+	});
+}
+function SelectFace(img)
+{
+	var facetext="";
+	facetext=img.src;
+	var pos=facetext.lastIndexOf("/");
+	facetext=facetext.substr(pos+1,facetext.length-pos);
+	facetext=facetext.replace(".gif","");
+	facetext="[img]"+facetext+"[/img]";
+	$i("questionContent").value += facetext;
+    $('#facecont1').hide();
+}
+function ExecuteFace(str)
+{
+	str=str.replace(/\[img\]QQ(\S+?)\[\/img\]/ig,"<img src=\"images/face/face_gif/QQ/QQ$1.gif\" />");/*QQ表情*/ 
+	str=str.replace(/\[upload\](\S+?)\[\/upload\]/ig,"<center><a href=\"$1\"><img src=\"$1\" border=\"0\" /></a></center>");/*上传图片*/ 
+	//str=str.replace(/\[img\]cc(\S+?)\[\/img\]/ig,"<img src=\"images/face/face_gif/xiaocc/cc$1.gif\"/>");/*悠嬉猴表情*/ 
+	//str=str.replace(/\[img\]yc(\S+?)\[\/img\]/ig,"<img src=\"images/face/face_gif/yoyocici/yc$1.gif\"/>");/*洋葱头表情*/ 
+	return str; 
+}
+function hideshow(o){
+	var myvar = $i(o);
+	if (myvar.style.display=="")
+	{
+		myvar.style.display="none";
+
+	}else {
+		myvar.style.display="";
+	}
+}
+</script>
+</head>
+<body>
+<div class="jbody"> <jcms:include file="~/_data/html/header.htm" />
+  <!--~搜索条~-->
+  <script type="text/javascript">document.write(_jcms_SearchBar());</script>
+  <div class="main pbody">
+    <div class="mybody">
+      <div class="thispagenav mt5">
+        <div class="title"></div>
+        <div class="placenav"><a href="<jcms:site.home/>" class="home"></a>&nbsp;&raquo;&nbsp;留言中心&nbsp;&raquo;&nbsp;<span class="classname"></span></div>
+      </div>
+      <div class="contenter0">
+        <div class="question">
+          <div class="question-main clearfix">
+            <div class="question-side">
+              <ul class="question-leftmenu">
+                <li id="question-leftmenu_1"><a href="?classid=1" title='技术咨询'>技术咨询</a></li>
+                <li id="question-leftmenu_2"><a href="?classid=2" title='产品咨询'>产品咨询</a></li>
+                <li id="question-leftmenu_3"><a href="?classid=3" title='意见建议'>意见建议</a></li>
+                <li id="question-leftmenu_4"><a href="?classid=4" title='其他问题'>其他问题</a></li>
+              </ul>
+              <script type="text/javascript">
+$('#question-leftmenu_'+classid).addClass('current');
+</script>
+            </div>
+            <div class="question-content">
+<textarea id="tplList" style="display:none">
+{#foreach $T.table as record}<a name="c{$T.record.id}"></a>
+<table class="question-content-table">
+	<tr>
+		<td width="150" valign="top" class="question-content-table-left"><dl>
+				<dt>{$T.record.username}</dt>
+				<dd>
+					<div><img src='{site.Dir}_data/avatar/{$T.record.userid}_l.jpg' onerror="this.src='{site.Dir}_data/avatar/0_l.jpg'" border='0' width="100" /></div>
+					<div> {#if $T.record.userid != "0" && CurrentUserId !="0" && $T.record.userid != CurrentUserId}
+						<ul class="question-content-table-leftbar">
+							<li title="发信息给{$T.record.username}" class="message"><a href="javascript:void(0);" onclick="ajaxAddMessage('{$T.record.userid}','{$T.record.username}')">发信息</a></li>
+							<li title="加{$T.record.username}为好友" class="friend"><a href="javascript:void(0);" onclick="ajaxAddFriend({$T.record.userid})">加好友</a></li>
+						</ul>
+						{#/if} </div>
+				</dd>
+			</dl></td>
+		<td valign="top" class="question-content-table-right"><dl>
+				<dt>
+					<span class="time">留言时间：{$T.record.adddate}</span>
+					{#if CurrentAdminLogined =="1"}
+						{#if $T.record.replyuserid == "" || $T.record.replyuserid == "0"}
+						<span class="adminbar" onclick="ajaxQuestionReply2({$T.record.id});">回复</span>
+						{#/if}
+					<span class="adminbar" onclick="ajaxQuestionDelete({$T.record.id});">删除</span>
+					{#/if}
+				</dt>
+				<dd>
+					{#if $T.record.ispass == "1"}
+					<strong>{$T.record.title}</strong><br />
+					<span style="word-break: break-all">{ExecuteFace($T.record.content)}</span>
+					{#if $T.record.replyuserid != "" && $T.record.replyuserid != "0"}
+						<div class="questionreply">
+							<font color="#FF5500">回复：</font> <br />
+							<span style="word-break: break-all;"><font color="#FF5500">{ExecuteFace($T.record.replycontent)}</font></span>
+						</div>
+					{#/if}
+					{#else}
+					<span style="color:red">内容未审核</span>
+					{#/if}
+				</dd>
+			</dl></td>
+	</tr>
+	
+</table>
+{#/for} 
+</textarea>
+              <div id="ajaxQuestionList">
+                <div style="margin:10px auto;width:32px;"><img src="{site.Dir}style/loading/01.gif" border="0"></div>
+              </div>
+              <div id="ajaxPageBar" class="pages"></div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="question-bom"></div>
+        </div>
+        <div id="question-form" class="question-form">
+          <div class="posttitle"> <strong id="posttitle">发表留言</strong></div>
+            <div class="postbox">
+              <div class="txtbox">
+                <input type="hidden" name="questionClassId" id="questionClassId" value="1">
+                <input type="hidden" name="questionParentId" id="questionParentId" value="0">
+                <span class="questionName" style="font-weight:bold;"> </span> <span id="guest_btn" style="display:none;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<a href="{site.Dir}passport/login.aspx">登录</a>] [<a href="{site.Dir}passport/register.aspx">注册</a>] </span><br />
+                留言标题
+                <input name="questionTitle" id="questionTitle" type="text" maxlength="16" class="title" />
+                <br />
+              </div>
+              <div class="txtbox">
+                <div style="width:99%;">
+                  <div class="face-div"  id="divFaceShow" onfocu\sout="$('#facecont1').hide();">
+                    <div class="face clearfix"> <span class="icon" onclick="hideshow('facecont1');"></span> <span class="select" ><a onclick="hideshow('facecont1');">更多表情</a></span> </div>
+                    <div id="facecont1" class="face-list-div" style="display:none;">
+                      <div class="face-close" title="关闭" onclick="hideshow('facecont1');"></div>
+                      <ul class="face-nav">
+                        <li><a href="#face_QQ"><span>QQ表情</span></a></li>
+                      </ul>
+                      <div id="face_QQ">
+                        <div>
+                          <div class="face-subnav">
+                            <ul>
+                              <li><a href="images/face/QQ01.html"><span>1</span></a></li>
+                              <li><a href="images/face/QQ02.html"><span>2</span></a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <textarea name="questionContent" id="questionContent" onfocus="$('#facecont1').hide();"></textarea>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="userbox">
+                <dl>
+                  <dd style="display:none;"> 用户名
+                    <input name="questionName" id="questionName" class="username" type="text" maxlength="20" />
+                  </dd>
+                  <dd> 验证码
+                    <input name="questionCode" id="questionCode" class="code" type="text" maxlength="6" style="ime-mode:disabled;" onpaste="return false" />
+                    <img id="imgCode" onclick="_jcms_GetRefreshCode('imgCode');" src="" align="absmiddle" style="cursor: pointer" /><a href="javascript:void(0);" id="_vcode_txt" onclick="_jcms_GetRefreshCode('imgCode');return false;">换一换</a> <img id="imgRead" src="{site.Dir}style/common/maintb.gif" align="absmiddle" style="cursor: pointer" alt="收听验证码" title="收听验证码" onclick="PlayCodeVoice('player');" /><span id="player"></span></dd>
+                  <dd class="mtop">
+                    <input type="button" id="btnQuestionAdd" name="btnQuestionAdd" onclick="ajaxQuestionAdd();" value="" class="s" />
+                  </dd>
+                </dl>
+              </div>
+              <div class="clear"></div>
+            </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="clear">
+      <!--~清除浮动~-->
+    </div>
+  </div>
+  <!--~页面底部~-->
+  <jcms:include file="~/_data/html/footer.htm" /> </div>
+<script type="text/javascript">$('#topnav li.feedback').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

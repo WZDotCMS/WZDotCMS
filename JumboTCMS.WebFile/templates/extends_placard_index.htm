@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>公告 - <jcms:site.name/></title>
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<style type="text/css"> 
+.placardview { font-size:12px; width: 904px; border:1px solid #AACCEE; margin-top:10px; margin-left:6px; padding-bottom:10px; background:url(/themes/default/images/place_bg.gif) 0px -1px repeat-x; }
+.placardview dl { width: 898px; margin:10px auto 0px; display:block; }
+.placardview dl dt { width: 886px; margin:0px auto 0px; } 
+.placardview dl dt a { color: #00599B; line-height:27px; font-size:14px; font-weight:bold; margin-left:10px; letter-spacing:1px; }
+.placardview dl dd { width: 872px; margin:0px auto 0px; }
+.placardview dl dd a { margin:0px auto 20px; }
+.placardview { line-height:21px; }
+.placardview * b { display:block; font-size:14px; margin-top:16px; }
+</style>
+
+</head>
+<body>
+<div class="jbody">
+	<jcms:include file="~/_data/html/header.htm" />
+	<div class="main pbody">
+		<div class="mybody">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><a href="<jcms:site.home/>" class="home"></a>&nbsp;&raquo;&nbsp;公告</div>
+			</div>
+			<div class="contenter0">
+				<div class="placardview">
+					<dl>
+						<dt><a>{$PlacardTitle}</a></dt>
+						<dd>{$PlacardContent}</dd>
+						<dd>发布：{$PlacardAddDate}</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<jcms:include file="~/_data/html/footer.htm" />
+</div>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

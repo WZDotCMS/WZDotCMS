@@ -1,0 +1,17 @@
+﻿<div class="rightlist mt5">
+	<div class="title">
+                <a href="${site.Dir}speciallist.htm"><strong>特约专题</strong></a>
+                <span><a href="${site.Dir}speciallist.htm" class="more">更多 &raquo;</a></span>
+	</div>
+	<div class="body gplist">
+		<dl>
+			<dd>
+				<ul>
+				<#foreach collection="${specials}" var="field" index="i">
+				<li><a href="${site.Dir}special/${field.source}" target="_blank" title="$_{title}">${field.title}</a></li>
+				<#/foreach>
+                		</ul>
+			</dd>
+		</dl>
+	</div>
+</div>

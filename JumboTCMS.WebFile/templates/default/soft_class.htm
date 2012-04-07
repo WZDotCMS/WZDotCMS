@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><jcms:site.page.title/></title>
+<meta http-equiv="Content-Language" content="zh-CN" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta name="keywords" content="<jcms:site.page.keywords/>" /><meta name="description" content="<jcms:site.page.description/>" /><meta name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<base href="<jcms:site.page.basehref/>">
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	
+	<div class="main pbody">
+		<div class="my-left">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><jcms:site.page.nav/> </div>
+			</div>
+			<div class="contenter">
+				<div class="softbox">
+					{$jcms:class(title,summary,author,isimg,img,adddate,viewnum)}
+					<#foreach content>
+					<dl>
+						<dt><a href="$_{url}" title="$_{title}">${cutstring(field.title,74)}</a></dt>
+						<dd class="picview"><img src='$_{img}' border='0' width='145' height='80' alt='${cutstring(field.title,100)}'></dd>
+						<dd class="preview">${cutstring(field.summary,200)}...</dd>
+						<dd class="info"><span>更新时间：</span> ${cdatestring(field.adddate,"yy-MM-dd")} <span>浏览次数：</span> ${field.viewnum}</dd>
+					</dl>
+					<#/foreach>
+					{$/jcms:class}
+					<div class="pages"> {$_getPageBar()} </div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+		<div class="my-right">
+			<div class="rightbox1 mt5">
+				<div class="bar1">
+					<a class="s">栏目导航</a>
+					<a></a>
+				</div>
+				<div>
+					<div class="body">
+<ul>
+<jcms:classloop channelid="{$ChannelId}" depth="0" repeatnum="0">
+<li class="d{$ClassDepth}"><a href="{$ClassLink}">{$ClassName}</a></li>
+</jcms:classloop>
+</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="rightbox1 mt5">
+				<div class="bar1" id="CTab">
+					<a href="#CxTab1" class="s">最新{$ChannelItemName}</a>
+					<a href="#CxTab2">推荐{$ChannelItemName}</a>
+				</div>
+				<div>
+					<div id="CShow" class="body"></div>
+					<div style="display:none;" id="CxTab1"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div style="display:none;" id="CxTab2"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor" istop="1">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab3=new jTab('CTab','CShow','more');</script>
+			<div class="right-baidu"><!--#include virtual="/_data/shtm/more/5.htm" --></div>
+		</div>
+
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">$('#topnav li.channel{$ChannelId}').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<settings
+	autoResize="true"
+	playerWidth="550"
+	playerHeight="400"
+	previewImage = "/style/flash/videoPlayer/Evanescence1.jpg"
+	stafImage = "/style/flash/videoPlayer/Evanescence2.jpg"
+	
+	autoPlay = "false"
+	loop = "false"
+	
+	volume = "75"
+	controlsPadding = "10"
+	keepAspectRatio = "true"
+	
+	showPreviewImage = "true"
+	showShare = "false"
+	showFullScreenButton = "true"
+	showMiddlePlayButton = "true"
+	
+	spaceKeyListener = "true"
+	clickListener = "true"
+	
+	showWatermark = "false"
+	watermarkPath = "/style/flash/videoPlayer/ratatouilleLogo.png"
+	watermarkLink = "http://www.jumbotcms.net"
+	
+	aspectRatio = "4:3"
+	totalTime = "0"
+/>

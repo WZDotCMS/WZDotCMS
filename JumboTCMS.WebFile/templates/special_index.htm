@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta   http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta   name="robots" content="noindex, nofollow" />
+<meta   http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title><jcms:site.page.title/></title>
+<meta   name="description" content="<jcms:site.page.description/>" />
+<meta   name="keywords" content="<jcms:site.page.keywords/>" />
+<meta   name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link   type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link   type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<script type="text/javascript">
+var pagesize=20;
+var page=thispage();
+function ajaxList(currentpage)
+{
+	if(currentpage!=null) page=currentpage;
+	$.ajax({
+		type:		"get",
+		dataType:	"json",
+		data:		"sid={$SpecialId}&page="+currentpage+"&pagesize="+pagesize+"&time="+(new Date().getTime()),
+		url:		site.Dir + "ajax/specialcontent.aspx?oper=ajaxGetList",
+		error:		function(XmlHttpRequest,textStatus, errorThrown){if(XmlHttpRequest.responseText!=""){alert(XmlHttpRequest.responseText);}},
+		success:	function(d){
+			$("#ajaxList").setTemplateElement("template", null, {filter_data: true});
+			$("#ajaxList").processTemplate(d);
+			$("#ajaxPageBar").html(d.pagerbar);
+		}
+	});
+}
+</script>
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	<div class="main pbody">
+		<div class="mybody">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"> </div>
+				<div class="placenav"><jcms:site.page.nav/> </div>
+			</div>
+			<div class="contenter0">
+				<!--~内容列表~-->
+				<div class="listbox0 mt5">
+<textarea id="template" style="display:none">
+					<dl>
+						<dt><span class="title"><a>{$SpecialName}</a></span></dt>
+						<dd>
+<ul>
+{#foreach $T.table as record}
+<li> <a href="{site.Dir}{$T.record.channeldir}/">{$T.record.channelname}</a><a>&gt;&gt;</a><a href="javascript:void(0)" onclick="ajaxGo2View({$T.record.channelid},{$T.record.contentid});">{$T.record.title}</a></li>
+{#/for}
+</ul>
+						</dd>
+					</dl>
+</textarea>
+					<div id="ajaxList"></div>
+					<div id="ajaxPageBar" class="pages"> </div>
+<script type="text/javascript">
+ajaxList(page);
+</script>
+				</div>
+			</div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

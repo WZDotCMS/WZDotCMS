@@ -1,0 +1,160 @@
+﻿/*定义一些通用的样式*/
+.nochinese {ime-mode:disabled;}
+a.highlight { color:#000; background-color:yellow; }
+a.highlight:hover { color:#000; text-decoration: underline; }
+
+
+
+.ipt { border: 1px solid #b5b8c8; font-family: verdana, simsun, sans-serif; }
+.Btn { border: 1px solid #eeeeee; height: 20px; width: 50px; font-family: "宋体", Verdana, Arial; font-size: 12px; text-align: center; }
+#hintSpan { font-size: 12px; }
+#hintSpan * { margin: 0; }
+#hintdot { border: 0px; padding-right: 5px; }
+#hintDiv { position: absolute; visibility: visible; width: 271px; z-index: 191; }
+#hintIframe { position: absolute; z-index: 190; width: 266px; }
+.hintmessagetext { overflow: hidden; zoom: 1; border-left: 1px solid #000; border-right: 1px solid #000; padding: 0 10px 0 10px; text-align: left; background: #ffffe1; word-break: break-all; letter-break: break-all; }
+.hintmessagetext img { float: left; margin: 0 3px 3px 3px; }
+#windowMask { position: absolute; z-index: 200; top: 0px; left: 0px; width: 100%; height: 100%; opacity: 0.06; filter: alpha(opacity=6); background-color: transparent !important; background-color: #000000; background-image: url(maskBG.png) !important; background-image: none; background-repeat: repeat; display: none; }
+/*dialog样式0*/
+.dialogSubmit0 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/0/button1.gif); }
+.dialogCancel0 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/0/button1.gif); }
+.dialogBoxFace0 { behavior: url(../style/dialog/0/png.htc); }
+.dialogBodyBox0 { border: 0px; background: url(../style/dialog/0/sBody_bg.png) repeat-x left top; overflow:hidden;}
+.dialogMsg0 { text-align: left; font-size: 12px; color: #000; }
+.dialogFunc0 { text-align: center; }
+.dialogBox0 { border: 1px solid #C4DDE9; z-index: 210; }
+.dialogTitleDiv0 { display:none; }
+.dialogBoxTitle0 { display:none; }
+.dialogBoxClose0 { display:none; }
+.dialogBody0 { background: #fff; color: #000; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+/*dialog样式1*/
+.dialogSubmit1 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/1/button1.gif); }
+.dialogCancel1 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/1/button1.gif); }
+.dialogBoxFace1 { }
+.dialogBodyBox1 { border: 0px; background: url(../style/dialog/1/sBody_bg.png) repeat-x left top; overflow:hidden;}
+.dialogMsg1 { text-align: left; font-size: 12px; color: #000; }
+.dialogFunc1 { text-align: center; }
+.dialogBox1 { border: 1px solid #AACCEE; z-index: 210; }
+.dialogTitleDiv1 { height: 35px; border: 0px; margin: 0px; padding: 0px; background: #E5EEF3 url(../style/dialog/1/title_bg.png) repeat-x; }
+.dialogBoxTitle1 { text-align: left; color: #166AB6; font-size: 14px; float: left; height: 35px; line-height: 35px; font-weight: bold; padding-left: 10px; text-indent: 4px; }
+.dialogBoxClose1 { float: right; padding-right: 10px; }
+.dialogBody1 { background: #fff; color: #000; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+/*dialog样式2*/
+.dialogSubmit2 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/2/button1.gif); }
+.dialogCancel2 { cursor:pointer; font-size: 12px; width: 71px; height: 22px; line-height: 22px; border-style: none; background: transparent url(../style/dialog/2/button1.gif); }
+.dialogBoxFace2 { }
+.dialogBodyBox2 { border: 0px; background: url(../style/dialog/2/sBody_bg.png) repeat-x left top; overflow:hidden;}
+.dialogMsg2 { text-align: left; font-size: 12px; color: #000; }
+.dialogFunc2 { border-top: 1px solid #C4DDE9; background: #EEF7FE; text-align: right; padding-right: 20px; }
+.dialogBox2 { border: 1px solid #C4DDE9; z-index: 210; }
+.dialogTitleDiv2 { height: 35px; border: 0px; margin: 0px; padding: 0px; background: #E5EEF3 url(../style/dialog/2/title_bg.png) repeat-x; }
+.dialogBoxTitle2 { text-align: left; color: #166AB6; font-size: 14px; float: left; height: 35px; line-height: 35px; font-weight: bold; padding-left: 10px; text-indent: 4px; }
+.dialogBoxClose2 { float: right; padding-right: 10px; }
+.dialogBody2 { background: #fff; color: #000; border: 0px; margin: 0px; padding: 0px; overflow:hidden;}
+#dialogBoxShadow { z-index: 209; }
+#dialogBoxDivShim { z-index: 208; }
+#dialogFrame { border: 0px; margin: 0px; padding: 0px; }
+
+
+
+
+
+
+
+.jtip { margin:0 auto; padding: 1px; font-size: 12px; opacity: 0.99; filter: alpha(opacity=99); }
+.jtip-inner { width:235px; height:auto; border: 1px solid #2177BF; padding: 10px; background:url(../_libs/jquery.jtip/images/jtip-bg.gif) repeat-x; color: #000000; text-align: left; line-height:14px;}
+.jtip-inner strong { color: #0072C1; }
+.jtip-b { background-image: url(../_libs/jquery.jtip/images/jtip-b.gif); background-position: top center; }
+.jtip-t { background-image: url(../_libs/jquery.jtip/images/jtip-t.gif); background-position: bottom center; }
+.jtip-l { background-image: url(../_libs/jquery.jtip/images/jtip-l.gif); background-position: right center; }
+.jtip-r { background-image: url(../_libs/jquery.jtip/images/jtip-r.gif); background-position: left center; }
+
+.tip-t { background:url(../_libs/jquery.jtip/images/help.gif) no-repeat left top; width:16px; height:16px; padding: 0px; margin:0px; cursor:pointer; border:none; }
+.tip-r { background:url(../_libs/jquery.jtip/images/help.gif) no-repeat left top; width:16px; height:16px; padding: 0px; margin:0px; cursor:pointer; border:none; }
+.tip-b { background:url(../_libs/jquery.jtip/images/help.gif) no-repeat left top; width:16px; height:16px; padding: 0px; margin:0px; cursor:pointer; border:none; }
+.tip-l { background:url(../_libs/jquery.jtip/images/help.gif) no-repeat left top; width:16px; height:16px; padding: 0px; margin:0px; cursor:pointer; border:none; }
+
+
+
+
+
+.onNormal,
+.onShow,
+.onFocus,
+.onError,
+.onSuccess,
+.onLoad
+{
+
+    padding: 4px 10px 4px 25px;
+    font-size: 12px;
+    line-height:14px;
+    font:12px/1.0 verdana,simsun,sans-serif;
+    margin:0;
+}
+.onNormal
+{
+    border: 0px solid #E3E3E3;
+    color: #999999;
+}
+.onShow
+{
+    padding: 4px 10px 4px 9px;
+    border: 0px solid #E8E8E8;
+    color: #999999;
+}
+.onFocus
+{
+    background: url(../_libs/jquery.formvalidator/images/reg_ico.gif) no-repeat 4px 0px;
+    border: 0px solid #E8E8E8;
+    color: #999999;
+}
+.onError
+{
+    background: url(../_libs/jquery.formvalidator/images/reg_ico.gif) no-repeat 4px -96px;
+    border: 0px solid #EBADB0;
+    color: #B52726;
+}
+.onSuccess
+{
+    background: url(../_libs/jquery.formvalidator/images/reg_ico.gif) no-repeat 4px -48px;
+    border: 0px solid #ABCDE8;
+    color: #2666AF;
+}
+.onLoad
+{
+    background: url(../_libs/jquery.formvalidator/images/loading.gif) no-repeat;
+    border: 0px solid #E8E8E8;
+    color: #000000;
+}
+span.mb1 { margin-bottom:-1px; }
+span.mb2 { margin-bottom:-2px; }
+span.mb3 { margin-bottom:-3px; }
+span.mb4 { margin-bottom:-4px; }
+span.mb5 { margin-bottom:-5px; }
+
+
+
+#ColorPickerDiv 
+{
+	display: block;
+	display: none;
+	position: relative;
+	border: 1px solid #777;
+	background: #fff;
+}
+.ColorPickerArea
+{
+	border-collapse: collapse;
+	border: solid;
+	border-color: #000000;
+	border-width:1px;
+}
+.ColorPickerDivSample
+{
+	margin: 0px 0px 0px 4px;
+	border: solid 1px #000;
+	padding: 0px 10px;	
+	position: relative;
+	cursor: pointer;
+}

@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><jcms:site.page.title/></title>
+<meta http-equiv="Content-Language" content="zh-CN" /><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta name="keywords" content="<jcms:site.page.keywords/>" /><meta name="description" content="<jcms:site.page.description/>" /><meta name="author" content="<jcms:site.author/>" />
+<script type="text/javascript" src="{site.Dir}_libs/jquery.tools.pack.js"></script>
+<script type="text/javascript" src="{site.Dir}_data/jcmsV5.js"></script>
+<link type="text/css" rel="stylesheet" href="{site.Dir}_data/jcmsV5.css" />
+<link type="text/css" rel="stylesheet" href="{site.Dir}themes/default/css/global.css" id="cssTheme" />
+<base href="<jcms:site.page.basehref/>">
+</head>
+<body>
+<div class="jbody">
+	<!--#include virtual="/_data/shtm/header.htm" -->
+	<!--~搜索条~-->
+	<script type="text/javascript">document.write(_jcms_SearchBar());</script>
+	
+	<div class="main pbody">
+		<div class="my-left">
+			<!--~位置导航~-->
+			<div class="thispagenav mt5">
+				<div class="title"></div>
+				<div class="placenav"><jcms:site.page.nav/> </div>
+			</div>
+			<div class="contenter">
+				<div class="documentview mt5">
+					<div class="stitle" ondblclick="ShowEditDiv('{$ChannelType}',{$ChannelId},{$_id})"><h1 title="{$_title}" id="title">{$_title}</h1></div>
+					<div class="sinfo">
+						<div class="spic"> <img src="{$_img}" width="240" height="320" alt="{$_title}" /></div>
+					</div>
+					<div class="sinfo">
+						<ul>
+							<li><strong>{$ChannelItemName}页数：</strong> {$_pagenumber}</li>
+							<li><strong>更新时间：</strong> {$_adddate}</li>
+							<li><strong>{$ChannelItemName}作者：</strong> {$_author}</li>
+							<li><strong>浏览次数：</strong> {$_viewnum}</li>
+							<li><strong>下载次数：</strong> {$_downnum}</li>
+							<li><strong>下载需博币：</strong> <font color="#FF5500">{$_points}</font></li>
+						</ul>
+
+					</div>
+					<!--简介-->
+					<div class="stitle"> {$ChannelItemName}简介</div>
+					<div class="sintro"> <p>{$_summary}</p> </div>
+					<!--下载-->
+					<div class="stitle"> 下载地址</div>
+					<div class="sdown"><a href="javascript:Go2PageForm('document_down.aspx?ChannelId={$ChannelId}&Id={$_id}');">点击下载</a></div>
+					<div class="stitle"> 下载说明</div>
+					<div class="sintro">
+						<p>1、如果您是VIP用户，那么下载不会扣除您拥有的博币。</p>
+						<p>2、对于普通会员，下载将扣除相应博币。</p>
+						<div class="sads"><script type="text/javascript" src="{site.Dir}_data/style/more/3.js"></script></div>
+					</div>
+					<div class="clear"><!--~清除浮动~--></div>
+					<!--~操作~-->
+					<div class="operbar"><div class="share"><!--#include virtual="/_data/shtm/share.htm" --></div><span class="r">[<a href="{site.Dir}review/default.aspx?ccid={$ChannelId}&ctype={$ChannelType}&id={$_id}">发表评论</a>]</span> <span class="r">[<a href="javascript:addFavorite({$ChannelId},'{$ChannelType}',{$_id});" title="本站会员收藏">本站收藏</a>]</span></div>			
+					<div class="context">
+						<div class="neightor"> {$_getNeightor()} </div>
+					</div>
+					<div class="clear"><!--~清除浮动~--></div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="my-right">
+			<div class="rightlist mt5">
+				<div class="title"><strong>相关{$ChannelItemName}</strong></div>
+				<div class="body gplist">
+					<dl>
+						<dd>
+<jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title" wherestr="id小于{$_id}" islike="1" keywords="{$_tags}">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop>
+						</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="rightbox1 mt5">
+				<div class="bar1" id="CTab">
+					<a href="#CxTab1" class="s">最新{$ChannelItemName}</a>
+					<a href="#CxTab2">推荐{$ChannelItemName}</a>
+				</div>
+				<div>
+					<div id="CShow" class="body"></div>
+					<div style="display:none;" id="CxTab1"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor" wherestr="id<={$_id}">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div style="display:none;" id="CxTab2"><jcms:contentloop channelid="{$ChannelId}" classid="0" repeatnum="10" fields="title,tcolor" wherestr="id<={$_id}" istop="1">
+<ul>
+<#foreach content>
+<li><a href="$_{url}" title="$_{title}" style="color:${field.tcolor}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</jcms:contentloop></div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<script type="text/javascript">var iTab3=new jTab('CTab','CShow','more');</script>
+			<div class="right-baidu"><!--#include virtual="/_data/shtm/more/5.htm" --></div>
+		</div>
+		<div class="clear">
+			<!--~清除浮动~-->
+		</div>
+	</div>
+	<!--~页面底部~-->
+	<!--#include virtual="/_data/shtm/footer.htm" -->
+</div>
+<script type="text/javascript">$('#topnav li.channel{$ChannelId}').addClass("current");</script>
+<script type="text/javascript">get_user_status(0);</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+﻿<div class="placard">
+<ul>
+<#foreach collection="${placards}" var="field" index="i">
+<li><a target="_blank" href="${site.Dir}extends/placard/default.aspx?id=${field.id}" title="$_{title}">${field.title}</a></li>
+<#/foreach>
+</ul>
+</div>
+<script> 
+var placard_timer;
+function placard_scroll(){
+	$(".placard ul").animate({top:"-22px"},600,function(){
+		$(".placard ul li:first").appendTo(".placard ul");
+		$(".placard ul").css("top","2");
+	})
+	window.setTimeout("placard_scroll()",5000);
+}
+window.setTimeout("placard_scroll()",5000);
+</script>
